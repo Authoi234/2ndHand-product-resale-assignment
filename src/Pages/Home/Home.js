@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Banner from '../Banner/Banner';
+import CarsSample from '../CarsSample/CarsSample';
+import Categories from '../Categories/Categories';
 
 const Home = () => {
     return (
         <div>
-            <h2>this is home</h2>
+            <div>
+                <Banner></Banner>
+                <Categories></Categories>
+                <CarsSample></CarsSample>
+            </div>
         </div>
     );
 };
