@@ -4,7 +4,7 @@ import '../../App.css';
 
 const Navbar = () => {
     const navData = [
-        <li className='list-item list-hover-animation'><Link to="/">Home</Link></li>
+        <li key={1} className='list-item list-hover-animation'><Link to="/">Home</Link></li>
     ]
     return (
         <div className="navbar bg-transparent backdrop-blur-xl">
