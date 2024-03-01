@@ -3,6 +3,56 @@
   text-align: center;
 }
 
+@keyframes colorfull-animation {
+  0%{
+    background-color: #61dafb;
+  }
+  25%{
+    background-color: #00fff7;
+  }
+  50%{
+    background-color: #34ffc5;
+  }
+  75%{
+    background-color: rgb(4, 255, 242);
+  }
+  100%{
+    background-color: #000dff;
+  }
+}
+
+@keyframes rainbow-bg {
+  0%{
+    background-color: red;
+  }
+  14.28%{
+    background-color: orange;
+  }
+  28.56%{
+    background-color: yellow;
+  }
+  57.12%{
+    background-color: green;
+  }
+  71.4%{
+    background-color: blue;
+  }
+  85.68%{
+    background-color: violet;
+  }
+  100%{
+    background-color: indigo;
+  }
+}
+
+.rainbow-bg{
+  animation: rainbow-bg 3s ease-in-out infinite;
+}
+
+.animation-colorfull{
+  animation: colorfull-animation 5s ease-in-out infinite;
+}
+
 .parallax-effect {
   transform-style: preserve-3d;
 }

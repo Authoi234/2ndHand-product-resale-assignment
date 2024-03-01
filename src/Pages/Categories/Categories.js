@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading/Loading';
 
 const Categories = () => {
 
-    const { data: categories = [], isPending } = useQuery({
+    const { data: categories = [], isPending, error } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/categories`);
@@ -18,6 +18,9 @@ const Categories = () => {
         return (
             <Loading></Loading>
         )
+    }
+    if (error) {
+        return <h1 className="my-3 text-2xl text-red-500">404 Something went wrong, in data Loading. Please check your internet connection</h1>;
     }
 
     return (
