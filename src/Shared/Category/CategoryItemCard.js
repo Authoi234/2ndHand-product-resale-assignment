@@ -3,13 +3,13 @@ import Tilt from 'react-parallax-tilt';
 import '../../App.css';
 import { FaCheck } from "react-icons/fa6";
 
-const CategoryItemCard = ({ product }) => {
+const CategoryItemCard = ({ product, handleOrderBook }) => {
     return (
         <div>
-            <Tilt scale={1.05} glareEnable={true} glareMaxOpacity={0.7} glareColor="white" glarePosition="all" glareBorderRadius="20px" className="background-stripes parallax-effect animation-colorfull" perspective={700}>
-                <div className="rounded-lg card w-full border border-b-slate-200 border-l-gray-100 inner-element relative" style={{ boxShadow: '20px 20px 50px rgba(0,0,0,0.5)' }}>
+            <div className="rounded-lg card w-full border border-b-slate-200 border-l-gray-100 inner-element relative animation-colorfull" style={{ boxShadow: '20px 20px 50px rgba(0,0,0,0.5)', backgroundColor: 'rgba(0,0,0,0.25)' }}>
+                <Tilt scale={1.05} glareEnable={true} glareMaxOpacity={0.8} glareColor="white" glarePosition="all" glareBorderRadius="20px" className="background-stripes parallax-effect" perspective={700}>
                     <figure><img src={product.img} alt="" /></figure>
-                    <div className="card-body" style={{ backgroundColor: 'rgba(0,0,0,0.25)' }}>
+                    <div className="card-body">
                         <h2 className="card-title text-white" style={{ fontFamily: 'cursive' }}>{product.name}</h2>
                         <div className='text-start font-bold'>
                             <p className="text-lg text-white">Location: <span className="text-orange-500">{product.location}</span></p>
@@ -19,14 +19,14 @@ const CategoryItemCard = ({ product }) => {
                             <p className="text-white text-lg">Time when it got Posted: <span className="text-orange-600">{product.timeWhenItPosted}</span></p>
                             <p className="text-white text-lg">Time when it got Posted: <span className="text-orange-600">{product.timeWhenItPosted}</span></p>
                             <p className="divider"></p>
-                            <p className="text-white text-lg flex">Seller's Name:{product.isUserVerified && <FaCheck className='text-3xl text-blue-500 font-bold'></FaCheck>} <span className='text-orange-600'>{product.sellersName}</span></p>
-                        </div>
-                        <div className='mt-3'>
-                            <button className=" btn btn-outline btn-secondary active:scale-75">Book Now</button>
+                            <p className="text-white text-lg flex">Seller's Name:{product.isUserVerified && <FaCheck className='text-2xl tooltip text-white bg-blue-500 mask mask-hexagon p-1 font-bold'></FaCheck>} <span className='text-orange-600'>{product.sellersName}</span></p>
                         </div>
                     </div>
+                </Tilt>
+                <div className='mb-5 -mt-1'>
+                    <button className=" btn btn-outline btn-secondary" onClick={() => handleOrderBook(product)}>Book Now</button>
                 </div>
-            </Tilt>
+            </div>
         </div>
     );
 };

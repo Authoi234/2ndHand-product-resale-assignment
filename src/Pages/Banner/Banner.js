@@ -15,7 +15,7 @@ const Banner = () => {
                     <p className="text-black md:text-white text-lg mx-2">Suv Cars</p>
                 </div>
             </div>
-            <video className='my-10 w-full hero-overlay h-full' autoPlay loop muted>
+            <video className='mb-10 w-full hero-overlay h-full' autoPlay loop muted>
                 <source src={require('../../assets/videos/Introducing_ Upgraded Model 3.mp4')} type='video/mp4' />
             </video>
             <div className="divider divdier-neutral"></div>

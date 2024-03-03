@@ -5,19 +5,31 @@
 
 @keyframes colorfull-animation {
   0%{
-    background-color: #61dafb;
+    background-color: #69e6ff;
   }
-  25%{
+  12.5%{
     background-color: #00fff7;
   }
+  25%{
+    background-color: #00fff2;
+  }
+  37.5%{
+    background-color: #04ffe6;
+  }
   50%{
-    background-color: #34ffc5;
+    background-color: #00ffc3;
+  }
+  62.5%{
+    background-color: #04ffe6;
   }
   75%{
-    background-color: rgb(4, 255, 242);
+    background-color: #00fff2;
+  }
+  87.5%{
+    background-color: #00fff7;
   }
   100%{
-    background-color: #000dff;
+    background-color: #69e6ff;
   }
 }
 
@@ -63,7 +75,6 @@
 }
 
 .list-hover-animation{
-  list-style: none;
   position: relative;
 }
 
