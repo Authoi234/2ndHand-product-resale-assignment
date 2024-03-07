@@ -9,7 +9,7 @@ const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const [passwordType, setPasswordType] = useState('password');
     const [error, setError] = useState('');
-    const [userRole, setUserRole] = useState('Buyer');
+    const [userRole, setUserRole] = useState('');
     const navigate = useNavigate();
 
     const handlePasswordShow = () => {
@@ -31,17 +31,36 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        const user = {
+            name,
+            email,
+            userRole
+        }
+
         createUser(email, password)
             .then(result => {
                 updateUser(name)
                     .then(result => {
-                        form.reset();
-                        toast.success('Successfully Sign Up 😊');
-                        navigate('/')
+
+                        fetch('http://localhost:5000/user', {
+                            method: 'POST',
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify(user)
+                        })
+                            .then(result => {
+                                console.log(result);
+                                form.reset();
+                                toast.success('Successfully Sign Up 😊' );
+                                navigate('/home');
+
+                            })
+                            .catch(err => setError(err.message));
                     })
                     .catch(err => setError(err));
             })
-            .catch(err => setError(err.message));
+            .catch(err => setError(err.message))
     }
 
     return (
@@ -67,13 +86,13 @@ const Register = () => {
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Select Role</span></div>
                         <div className='flex items-center my-2'>
-                            <input type="radio" value="Buyer" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-green-600' checked /><span className='mx-2'> Buyer</span>
+                            <input type="radio" value="Buyer" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-green-600'/><span className='mx-2'> Buyer</span>
                         </div>
                         <div className='flex items-center my-2'>
-                            <input type="radio" value="Seller" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-blue-600' /><span className='mx-2'> Seller</span>
+                            <input type="radio" value="Seller" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-blue-600'/><span className='mx-2'> Seller</span>
                         </div>
                     </label>
-                    <input className='btn rainbow-bg text-white w-full my-3'  type="submit" />
+                    <input className='btn rainbow-bg text-white w-full my-3' type="submit" />
                 </form>
                 <p className="text-red-600 -mt-4">{error}</p>
                 <p className='my-2 text-sm'>Already have an account ? <Link className='text-blue-400' to={'/login'}>Please Login</Link></p>

@@ -2,23 +2,36 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
-    
+
+    const { data: savedUser = [], error } = useQuery({
+        queryKey: ['savedUser', user?.uid],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/users/${user.email}`);
+            const data = await res.json();
+            return data;
+        }
+    });
+
     const handleLogOut = () => {
         logout()
-        .then(() => {})
-        .catch(() => {})
+            .then(() => { })
+            .catch(() => { })
     }
 
     const menuData = <>
-        <li key={1} className='list-item list-hover-animation my-1'><Link to="/">Home</Link></li>
+        <li key={1} className='list-item list-hover-animation my-1 mx-1'><Link to="/">Home</Link></li>
         {user?.uid ?
             <>
-                <li key={2} className='list-hover-animation my-1'><button className='bg-primary text-white' to="/login" onClick={handleLogOut}>Logout</button></li>
+                <li key={2} className='list-hover-animation my-1 mx-1'><button className='bg-primary text-white' to="/login" onClick={handleLogOut}>Logout</button></li>
+                {savedUser?.userRole === 'Buyer' && <>
+                    <li key={3} className='list-hover-animation my-1 list-item mx-1'><Link to='/myorders'>My Orders</Link></li>
+                </>}
             </> :
-            <li key={2} className='list-item list-hover-animation my-1'><Link to="/login">Login</Link></li>
+            <li key={4} className='list-item list-hover-animation my-1 mx-1'><Link to="/login">Login</Link></li>
         }
     </>
     return (

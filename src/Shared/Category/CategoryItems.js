@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import CategoryItemCard from './CategoryItemCard';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
+import toast from 'react-hot-toast';
 
 const CategoryItems = () => {
     const [orderBookingData, setOrderBookingData] = useState(null);
@@ -16,6 +17,32 @@ const CategoryItems = () => {
 
     const handleOrderSubmit = (e) => {
         e.preventDefault();
+
+        const bookingData = {
+            email: user.email,
+            productName: orderBookingData.name,
+            price: orderBookingData.resalePrice,
+            phone: e.target.phone.value,
+            location: e.target.location.value,
+            img: orderBookingData.img
+        }
+        console.log(bookingData);
+
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(bookingData)
+        })
+            .then(result => {
+                console.log(result);
+                if(result.status === 200){
+                    document.getElementById('order-booking-modal').close();
+                    toast.success(`${orderBookingData.name} is booked`)
+                }
+            })
+            .catch(err => console.log(err.message));
     }
 
     return (
@@ -30,20 +57,20 @@ const CategoryItems = () => {
                 <div className="modal-box">
                     <form onSubmit={handleOrderSubmit}>
                         <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Buyer Name</span></div>
+                            <div className="label"><span className="label-text font-semibold">Your Name</span></div>
                             <input className="input input-bordered w-full" name='userName' value={user?.displayName} readOnly type="text" />
                         </label>
                         <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Buyer Email</span></div>
+                            <div className="label"><span className="label-text font-semibold">Your Email</span></div>
                             <input className="input input-bordered w-full" name='userEmail' value={user?.email} readOnly type="email" />
                         </label>
                         <label className="form-control w-full">
                             <div className="label"><span className="label-text font-semibold">Product Name</span></div>
-                            <input className="input input-bordered w-full" name='productName' value={orderBookingData.name} readOnly type="text" />
+                            <input className="input input-bordered w-full" name='productName' value={orderBookingData?.name} readOnly type="text" />
                         </label>
                         <label className="form-control w-full">
                             <div className="label"><span className="label-text font-semibold">Product Price</span></div>
-                            <input className="input input-bordered w-full" name='price' value={orderBookingData.resalePrice} readOnly type="number" />
+                            <input className="input input-bordered w-full" name='price' value={orderBookingData?.resalePrice} readOnly type="number" />
                         </label>
                         <label className="form-control w-full">
                             <div className="label"><span className="label-text font-semibold">Enter Your Phone</span></div>

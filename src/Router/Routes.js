@@ -5,6 +5,7 @@ import CategoryItems from './../Shared/Category/CategoryItems';
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import MyOrders from "../Pages/Buyer/MyOrders/MyOrders";
 
 const routes = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
+                element: <Home></Home>
+            },
+            {
+                path: '/home',
                 element: <Home></Home>
             },
             {
@@ -27,6 +32,10 @@ const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/myorders',
+                element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             }
         ]
     }
