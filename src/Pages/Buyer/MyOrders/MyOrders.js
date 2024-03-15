@@ -16,7 +16,7 @@ const MyOrders = () => {
 
     return (
         <div className='overflow-x-auto'>
-            <table className="table">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>

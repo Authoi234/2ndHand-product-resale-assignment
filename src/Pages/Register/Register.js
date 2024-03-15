@@ -9,7 +9,7 @@ const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const [passwordType, setPasswordType] = useState('password');
     const [error, setError] = useState('');
-    const [userRole, setUserRole] = useState('');
+    const [userRole, setUserRole] = useState('Buyer');
     const navigate = useNavigate();
 
     const handlePasswordShow = () => {
@@ -51,7 +51,6 @@ const Register = () => {
                         })
                             .then(result => {
                                 console.log(result);
-                                form.reset();
                                 toast.success('Successfully Sign Up 😊' );
                                 navigate('/home');
 
@@ -86,7 +85,7 @@ const Register = () => {
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Select Role</span></div>
                         <div className='flex items-center my-2'>
-                            <input type="radio" value="Buyer" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-green-600'/><span className='mx-2'> Buyer</span>
+                            <input type="radio" value="Buyer" name='user-role' checked onChange={e => setUserRole(e.target.value)} className='radio checked:bg-green-600'/><span className='mx-2'> Buyer</span>
                         </div>
                         <div className='flex items-center my-2'>
                             <input type="radio" value="Seller" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-blue-600'/><span className='mx-2'> Seller</span>

@@ -17,7 +17,8 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                             <p className="text-white text-lg mb-3">Original Price: <span className="text-orange-600">{product.originalPrice}</span></p>
                             <p className="text-white text-lg mt-3">Years of use: <span className="text-orange-600">{product.yearsOfUse}</span></p>
                             <p className="text-white text-lg">Time when it got Posted: <span className="text-orange-600">{product.timeWhenItPosted}</span></p>
-                            <p className="text-white text-lg">Time when it got Posted: <span className="text-orange-600">{product.timeWhenItPosted}</span></p>
+                            <p className="text-white text-lg">Type: <span className="text-orange-600">{product.type}</span></p>
+                            <p className="text-white text-lg">Condition Type: <span className="text-orange-600">{product.conditionType}</span></p>
                             <p className="divider"></p>
                             <p className="text-white text-lg flex">Seller's Name:{product.isUserVerified && <FaCheck className='text-2xl tooltip text-white bg-blue-500 mask mask-hexagon p-1 font-bold'></FaCheck>} <span className='text-orange-600'>{product.sellersName}</span></p>
                         </div>

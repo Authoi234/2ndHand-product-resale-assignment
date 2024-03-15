@@ -10,7 +10,7 @@ const Navbar = () => {
     const { data: savedUser = [], error } = useQuery({
         queryKey: ['savedUser', user?.uid],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/${user.email}`);
+            const res = await fetch(`http://localhost:5000/users/${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -22,14 +22,17 @@ const Navbar = () => {
             .catch(() => { })
     }
 
-    const menuData = <>
+    const menuData = <> 
         <li key={1} className='list-item list-hover-animation my-1 mx-1'><Link to="/">Home</Link></li>
         {user?.uid ?
             <>
-                <li key={2} className='list-hover-animation my-1 mx-1'><button className='bg-primary text-white' to="/login" onClick={handleLogOut}>Logout</button></li>
                 {savedUser?.userRole === 'Buyer' && <>
-                    <li key={3} className='list-hover-animation my-1 list-item mx-1'><Link to='/myorders'>My Orders</Link></li>
+                    <li key={3} className='list-hover-animation my-1 list-item mx-1'><Link to='/dashboard'>Dashboard</Link></li>
                 </>}
+                {savedUser?.userRole === 'Seller' && <>
+                    <li key={3} className='list-hover-animation my-1 list-item mx-1'><Link to='/dashboard/addProduct'>Dashboard</Link></li>
+                </>}
+                <li key={2} className='list-hover-animation my-1 mx-1'><button className='bg-primary text-white' to="/login" onClick={handleLogOut}>Logout</button></li>
             </> :
             <li key={4} className='list-item list-hover-animation my-1 mx-1'><Link to="/login">Login</Link></li>
         }
