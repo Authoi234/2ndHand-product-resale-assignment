@@ -13,14 +13,17 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                         <h2 className="card-title text-white" style={{ fontFamily: 'cursive' }}>{product.name}</h2>
                         <div className='text-start font-bold'>
                             <p className="text-lg text-white">Location: <span className="text-orange-500">{product.location}</span></p>
-                            <p className="text-white text-lg mt-3">Resale Price: <span className="text-orange-600">{product.resalePrice}</span></p>
-                            <p className="text-white text-lg mb-3">Original Price: <span className="text-orange-600">{product.originalPrice}</span></p>
+                            <p className="text-white text-lg mt-3">Resale Price: <span className="text-orange-600">$ {product.resalePrice}</span></p>
+                            <p className="text-white text-lg mb-3">Original Price: <span className="text-orange-600">$ {product.originalPrice}</span></p>
                             <p className="text-white text-lg mt-3">Years of use: <span className="text-orange-600">{product.yearsOfUse}</span></p>
+                            <p className="text-white text-lg mt-3">Year of purchase: <span className="text-orange-600">{product.yearOfPurchase}</span></p>
                             <p className="text-white text-lg">Time when it got Posted: <span className="text-orange-600">{product.timeWhenItPosted}</span></p>
                             <p className="text-white text-lg">Type: <span className="text-orange-600">{product.type}</span></p>
                             <p className="text-white text-lg">Condition Type: <span className="text-orange-600">{product.conditionType}</span></p>
                             <p className="divider"></p>
                             <p className="text-white text-lg flex">Seller's Name:{product.isUserVerified && <FaCheck className='text-2xl tooltip text-white bg-blue-500 mask mask-hexagon p-1 font-bold'></FaCheck>} <span className='text-orange-600'>{product.sellersName}</span></p>
+                            <div className="divider divider-primary">Sellers Discription</div>
+                            <p className="text-white text-lg">{product.discription}</p>
                         </div>
                     </div>
                 </Tilt>
