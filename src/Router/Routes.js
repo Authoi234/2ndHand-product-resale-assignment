@@ -10,6 +10,7 @@ import DashboardLayout from './../layout/DashboardLayout/DashboardLayout';
 import BuyerRoute from "./BuyerRoute";
 import AddProduct from "../Pages/Seller/AddProduct/AddProduct";
 import SellerRoute from './SellerRoute';
+import MyProducts from "../Pages/Seller/MyProducts/MyProducts";
 
 const routes = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/addProduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/dashboard/myProducts',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             }
         ]
     }
