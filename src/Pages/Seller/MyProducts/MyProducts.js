@@ -5,32 +5,36 @@ import toast from 'react-hot-toast';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const [modalData, setModalData] = useState(null);
+    const [modalData, setModalData] = useState();
 
-    const { data: products = [], isPending, error } = useQuery({
+    const { data: products = [], isPending, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myProducts/${user.email}`);
+            const res = await fetch(`http://localhost:5000/myProducts/${user?.email}`);
             const data = res.json();
             return data;
         }
     })
 
-    const handleDelete = (product) => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
-            method: 'Delete',
-            headers: {
 
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if (data.acknowledged) {
-                toast.success(`Successfully Deleted ${product.name}`);
-                document.getElementById('delete-confirm-modal').close();
-            }
-        })
+    const handleDelete = (id) => {
+        if (window.confirm('Are you sure you want to delete?') === true) {
+            fetch(`http://localhost:5000/products/${id}`, {
+                method: 'Delete'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    refetch();
+                    toast.success('Product Deleted');
+                })
+        }
+        else {
+            return;
+        }
+    }
+
+    if (isPending) {
+        return <span className='loading loading-spinner loading-lg flex justify-center items-center'></span>
     }
 
     return (
@@ -50,31 +54,33 @@ const MyProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product, i) => <tr className='hover'>
+                        {products.map((product, i) => <tr>
                             <th>{i + 1}</th>
-                            <td><img className='avatar w-20 rounded-full' src={product.img} alt="" /></td>
-                            <td className='font-bold'>{product.name}</td>
-                            <td>${product.resalePrice}</td>
-                            <td>{product.status}</td>
-                            <td><button onClick={() => {document.getElementById('delete-confirm-modal').showModal(); setModalData(product)}} className='btn bg-red-500 border-2 hover:border-red-500 rounded-none text-white hover:bg-white hover:text-red-500'> Delete </button></td>
-                            <td><button className='btn bg-cyan-400 border-2 hover:border-cyan-400 hover:scale-105 rounded-none text-white hover:bg-white hover:text-cyan-400'> Advertise </button></td>
+                            <td><img className='avatar w-20 rounded-full' src={product?.img} alt="" /></td>
+                            <td className='font-bold'>{product?.name}</td>
+                            <td>${product?.resalePrice}</td>
+                            <td>{product?.status}</td>
+                            <td><label htmlFor='confirm-modal' onClick={() => setModalData(product)} className='btn btn-error btn-outline'>Delete</label></td>
                         </tr>)}
                     </tbody>
                 </table>
             </div>
-            <dialog id="delete-confirm-modal" className="modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Are you sure ? you want to Delete</h3>
-                    <p className="py-4">It will be deleted permanently, and cant be undone.</p>
-                    <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-neutral" onClick={() => setModalData(null)}>Close</button>
-                        </form>
-                        <button className='btn btn-primary' onClick={() => handleDelete(modalData)}>Delete</button>
+
+           { modalData && <div>
+                <input type="checkbox" id="confirm-modal" className="modal-toggle" />
+                <div className="modal" role="dialog">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Are you Sure? You want to delete</h3>
+                        <p className="py-4">It will permenently deleted and cant be undone</p>
+                        <div className="modal-action">
+                            <label htmlFor="confirm-modal" className="btn">Close</label>
+                            <label htmlFor="confirm-modal" onClick={() => handleDelete(modalData._id)} className="btn btn-error">Delete</label>
+
+                        </div>
                     </div>
                 </div>
-            </dialog>
+            </div>}
+
         </div>
     );
 };

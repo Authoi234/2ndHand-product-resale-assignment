@@ -27,10 +27,10 @@ const Login = () => {
         event.preventDefault();
         setLoginError('');
 
-        const form = event.target;
+        const form = event?.target;
 
-        const email = form.email.value;
-        const password = form.password.value;
+        const email = form?.email.value;
+        const password = form?.password.value;
 
         console.log(email, password);
 

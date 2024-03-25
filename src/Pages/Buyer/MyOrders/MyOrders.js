@@ -8,10 +8,10 @@ const MyOrders = () => {
 
     axios.get(`http://localhost:5000/orders/${user?.email}`)
         .then(function (response) {
-            setOrders(response.data);
+            setOrders(response?.data);
         })
         .catch(function (error) {
-            console.log(error.message);
+            console.log(error?.message);
         })
 
     return (
@@ -30,8 +30,8 @@ const MyOrders = () => {
                     {orders?.map((order, i) => <tr className="hover">
                         <th>{i + 1}</th>
                         <td><img className='avatar w-20 rounded-3xl' src={order?.img} alt="" /></td>
-                        <td>{order.productName}</td>
-                        <td>{order.price}</td>
+                        <td>{order?.productName}</td>
+                        <td>{order?.price}</td>
                         <td><button className="btn btn-primary">Pay</button></td>
                     </tr>)}
                 </tbody>

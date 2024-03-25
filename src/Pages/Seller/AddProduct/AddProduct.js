@@ -26,23 +26,23 @@ const AddProduct = () => {
             body: formData
         }).then(res => res.json())
         .then(result => {
-            if (result.success || result.status === 200) {
-                const type = data.category.split(' ')[1];
+            if (result?.success || result?.status === 200) {
+                const type = data?.category?.split(' ')[1];
                 const categoryId = parseInt(data.category.split(' ')[0]);
-                const img = result.data.url;
-                const name = data.name;
-                const location = data.location;
-                const resalePrice = parseInt(data.resalePrice);
-                const originalPrice = parseInt(data.originalPrice);
-                const yearsOfUse = parseInt(data.yearsofuse);
-                const discription = data.discription;
+                const img = result?.data.url;
+                const name = data?.name;
+                const location = data?.location;
+                const resalePrice = parseInt(data?.resalePrice);
+                const originalPrice = parseInt(data?.originalPrice);
+                const yearsOfUse = parseInt(data?.yearsofuse);
+                const discription = data?.discription;
                 const timeWhenItPosted = dateOfPost;
-                const sellersName = user.displayName;
+                const sellersName = user?.displayName;
                 const isUserVerified = false;
-                const conditionType = data.condition;
-                const yearOfPurchase = parseInt(data.yearofbuy);
-                const mobile = parseInt(data.mobile);
-                const email = user.email;
+                const conditionType = data?.condition;
+                const yearOfPurchase = parseInt(data?.yearofbuy);
+                const mobile = parseInt(data?.mobile);
+                const email = user?.email;
                 
                 const product = {
                     categoryId,

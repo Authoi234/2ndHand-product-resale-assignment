@@ -14,7 +14,7 @@ const SellerRoute = ({children}) => {
         }
     });
 
-    if (savedUser.userRole === 'Seller') {
+    if (savedUser?.userRole === 'Seller') {
         return children;
     }
 
