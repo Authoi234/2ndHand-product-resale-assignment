@@ -11,6 +11,7 @@ import BuyerRoute from "./BuyerRoute";
 import AddProduct from "../Pages/Seller/AddProduct/AddProduct";
 import SellerRoute from './SellerRoute';
 import MyProducts from "../Pages/Seller/MyProducts/MyProducts";
+import { useEffect } from "react";
 
 const routes = createBrowserRouter([
     {
@@ -28,7 +29,9 @@ const routes = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({params}) =>{
+                    return fetch(`http://localhost:5000/category/${params.id}`);
+                }
             },
             {
                 path: '/login',

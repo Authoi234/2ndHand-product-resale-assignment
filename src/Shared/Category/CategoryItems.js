@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData,  useParams } from 'react-router-dom';
 import CategoryItemCard from './CategoryItemCard';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
@@ -48,7 +48,7 @@ const CategoryItems = () => {
 
     return (
         <div className='my-10'>
-            <h1 className="text-black my-2 flex justify-center items-center text-3xl">There Are {data.length} Products Are Available</h1>
+            <h1 className=" my-2 flex justify-center items-center text-3xl">There Are {data.length} Products Are Available</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-4'>
                 {
                     data?.map(product => <CategoryItemCard handleOrderBook={handleOrderBook} product={product}></CategoryItemCard>)

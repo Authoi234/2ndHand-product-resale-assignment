@@ -145,7 +145,7 @@ const AddProduct = () => {
                     </label>
                     <div className="form-control md:max-w-md w-full my-3 mx-auto p-2 border-2 border-gray-300 border-dashed">
                         <input
-                            className="file-input file-input-bordered w-full text-black bg-pink-400" type="file" accept='image/*' {...register("image", { required: "Photo is required" })}
+                            className="file-input file-input-bordered w-full bg-pink-400" type="file" accept='image/*' {...register("image", { required: "Photo is required" })}
                         />
                     </div>
                     <button type="submit" className='btn btn-primary w-full md:max-w-md my-5'>Submit</button>

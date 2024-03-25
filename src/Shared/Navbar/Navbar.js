@@ -48,7 +48,7 @@ const Navbar = () => {
                         {menuData}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost text-2xl text-black flex"><img className='w-20' src={require("../../assets/images/2eVCvQ-LogoMakr.png")} alt="" /> Authois Car Resale</Link>
+                <Link to='/' className="btn btn-ghost text-2xl flex"><img className='w-20' src={require("../../assets/images/2eVCvQ-LogoMakr.png")} alt="" /> Authois Car Resale</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
