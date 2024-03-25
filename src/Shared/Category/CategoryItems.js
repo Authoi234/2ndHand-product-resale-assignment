@@ -19,6 +19,7 @@ const CategoryItems = () => {
         e.preventDefault();
 
         const bookingData = {
+            productId: orderBookingData._id,
             email: user.email,
             productName: orderBookingData.name,
             price: orderBookingData.resalePrice,
@@ -39,7 +40,7 @@ const CategoryItems = () => {
                 console.log(result);
                 if(result.status === 200){
                     document.getElementById('order-booking-modal').close();
-                    toast.success(`${orderBookingData.name} is booked`)
+                    toast.success(`${orderBookingData.name} is booked`);
                 }
             })
             .catch(err => console.log(err.message));
@@ -80,8 +81,9 @@ const CategoryItems = () => {
                             <div className="label"><span className="label-text font-semibold">Enter Your Meeting Location</span></div>
                             <input className="input input-bordered w-full" name='location' placeholder='Enter your meeting location here' type="text" required />
                         </label>
-                        <button type="submit" className='btn btn-primary my-2'>Submit</button>
+                        <button type="submit" className='btn btn-primary my-2 mx-2'>Submit</button>
                     </form>
+                        <button onClick={() => document.getElementById('order-booking-modal').close()} className='btn btn-accent my-2 mx-2'> Cancel</button>
                 </div>
             </dialog>
         </div>

@@ -28,7 +28,8 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                     </div>
                 </Tilt>
                 <div className='mb-5 -mt-1'>
-                    <button className=" btn btn-outline btn-secondary" onClick={() => handleOrderBook(product)}>Book Now</button>
+                    <p className="text-lg font-semibold my-2 text-white">Sale Status: {product.status}</p>
+                    <button className=" btn btn-outline btn-secondary" onClick={() => handleOrderBook(product)} disabled={ product.status === 'sold' && true}>Book Now</button>
                 </div>
             </div>
         </div>

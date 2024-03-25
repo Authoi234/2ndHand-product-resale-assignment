@@ -42,6 +42,7 @@ const AddProduct = () => {
                 const conditionType = data.condition;
                 const yearOfPurchase = parseInt(data.yearofbuy);
                 const mobile = parseInt(data.mobile);
+                const email = user.email;
                 
                 const product = {
                     categoryId,
@@ -58,7 +59,8 @@ const AddProduct = () => {
                     conditionType,
                     discription,
                     yearOfPurchase,
-                    mobile
+                    mobile,
+                    email
                 }
 
                 fetch(`http://localhost:5000/addProduct`, {
