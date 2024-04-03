@@ -12,6 +12,7 @@ import AddProduct from "../Pages/Seller/AddProduct/AddProduct";
 import SellerRoute from './SellerRoute';
 import MyProducts from "../Pages/Seller/MyProducts/MyProducts";
 import { useEffect } from "react";
+import MyBuyers from "../Pages/Seller/MyBuyers/MyBuyers";
 
 const routes = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/myProducts',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/myBuyers',
+                element: <SellerRoute><MyBuyers></MyBuyers></SellerRoute>
             }
         ]
     }

@@ -18,19 +18,14 @@ const MyProducts = () => {
 
 
     const handleDelete = (id) => {
-        if (window.confirm('Are you sure you want to delete?') === true) {
-            fetch(`http://localhost:5000/products/${id}`, {
-                method: 'Delete'
+        fetch(`http://localhost:5000/products/${id}`, {
+            method: 'Delete'
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+                toast.success('Product Deleted');
             })
-                .then(res => res.json())
-                .then(data => {
-                    refetch();
-                    toast.success('Product Deleted');
-                })
-        }
-        else {
-            return;
-        }
     }
 
     const handleAdvertise = (id) => {

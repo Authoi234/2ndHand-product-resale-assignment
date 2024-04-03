@@ -1,14 +1,28 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import CategoryItemCard from './CategoryItemCard';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
+import Loading from './../../Shared/Loading/Loading';
+import AdvertisedItemsCard from './AdvertisedItemsCard';
+import '../../App.css'
 
-const CategoryItems = () => {
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+const AdvertisedItems = () => {
     const [orderBookingData, setOrderBookingData] = useState(null);
     const { user } = useContext(AuthContext)
-    const data = useLoaderData();
-    console.log(data);
+
+    const { data: products, isPending, refetch, error } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/advertisedItems');
+            const data = await res.json();
+            return data;
+
+        }
+    })
+    console.log(products)
 
     const handleOrderBook = (orderData) => {
         setOrderBookingData(orderData);
@@ -27,7 +41,7 @@ const CategoryItems = () => {
             location: e.target.location.value,
             img: orderBookingData.img,
             name: user.displayName,
-            sellersEmail: orderBookingData.email 
+            sellersEmail: orderBookingData.email
         }
         console.log(bookingData);
 
@@ -41,6 +55,7 @@ const CategoryItems = () => {
             .then(result => {
                 console.log(result);
                 if (result.status === 200) {
+                    refetch();
                     document.getElementById('order-booking-modal').close();
                     toast.success(`${orderBookingData.name} is booked`);
                 }
@@ -48,13 +63,50 @@ const CategoryItems = () => {
             .catch(err => console.log(err.message));
     }
 
+    if (products?.length === 0) {
+        return ;
+    }
+
+
+    if (isPending) {
+        return <div className='my-20'>
+            <Loading></Loading>
+            <div className="divider"></div>
+        </div>
+    }
+
+    if (error) {
+        return <div className="my-20">
+            <h1 className="text-2xl text-red-600">Something went wrong in loading Advertised Items. Please check your internet connection</h1>
+        </div>
+    }
+
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1
+        }
+    };
+
     return (
-        <div className='my-10'>
-            <h1 className=" my-2 flex justify-center items-center text-3xl">There Are {data.length} Products Are Available</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-4'>
-                {
-                    data?.map(product => <CategoryItemCard handleOrderBook={handleOrderBook} product={product}></CategoryItemCard>)
-                }
+        <div className='px-7 pt-' style={{ backgroundImage: 'url(https://i.ibb.co/nD9XVBy/622956.webp)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
+            <h1 className="text-4xl text-cyan-300 font-bold font-sans" style={{
+                textShadow: `2px 2px 2px #080808`
+            }} >Advertised Products</h1>
+            <div className='mt-10 my-0 mx-auto'>
+                <Carousel responsive={responsive} containerClass='center-carousel' slidesToSlide={1} swipeable showDots={true} renderDotsOutside={true} infinite autoPlay>
+                    {
+                        products?.map(product => <AdvertisedItemsCard product={product} handleOrderBook={handleOrderBook} ></AdvertisedItemsCard>)
+                    }
+                </Carousel>
             </div>
             <dialog id="order-booking-modal" className="modal">
                 <div className="modal-box">
@@ -92,4 +144,4 @@ const CategoryItems = () => {
     );
 };
 
-export default CategoryItems;
+export default AdvertisedItems;

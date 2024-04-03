@@ -61,6 +61,12 @@
   animation: rainbow-bg 3s ease-in-out infinite;
 }
 
+.center-carousel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .animation-colorfull{
   animation: colorfull-animation 5s ease-in-out infinite;
 }
