@@ -64,7 +64,7 @@ const AdvertisedItems = () => {
     }
 
     if (products?.length === 0) {
-        return ;
+        return;
     }
 
 
@@ -96,52 +96,54 @@ const AdvertisedItems = () => {
         }
     };
 
-    return (
-        <div className='px-7 pt-' style={{ backgroundImage: 'url(https://i.ibb.co/nD9XVBy/622956.webp)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
-            <h1 className="text-4xl text-cyan-300 font-bold font-sans" style={{
-                textShadow: `2px 2px 2px #080808`
-            }} >Advertised Products</h1>
-            <div className='mt-10 my-0 mx-auto'>
-                <Carousel responsive={responsive} containerClass='center-carousel' slidesToSlide={1} swipeable showDots={true} renderDotsOutside={true} infinite autoPlay>
-                    {
-                        products?.map(product => <AdvertisedItemsCard product={product} handleOrderBook={handleOrderBook} ></AdvertisedItemsCard>)
-                    }
-                </Carousel>
-            </div>
-            <dialog id="order-booking-modal" className="modal">
-                <div className="modal-box">
-                    <form onSubmit={handleOrderSubmit}>
-                        <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Your Name</span></div>
-                            <input className="input input-bordered w-full" name='userName' value={user?.displayName} readOnly type="text" />
-                        </label>
-                        <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Your Email</span></div>
-                            <input className="input input-bordered w-full" name='userEmail' value={user?.email} readOnly type="email" />
-                        </label>
-                        <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Product Name</span></div>
-                            <input className="input input-bordered w-full" name='productName' value={orderBookingData?.name} readOnly type="text" />
-                        </label>
-                        <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Product Price</span></div>
-                            <input className="input input-bordered w-full" name='price' value={orderBookingData?.resalePrice} readOnly type="number" />
-                        </label>
-                        <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Enter Your Phone</span></div>
-                            <input className="input input-bordered w-full" name='phone' placeholder='Enter your Phone Number Here' type="number" required />
-                        </label>
-                        <label className="form-control w-full">
-                            <div className="label"><span className="label-text font-semibold">Enter Your Meeting Location</span></div>
-                            <input className="input input-bordered w-full" name='location' placeholder='Enter your meeting location here' type="text" required />
-                        </label>
-                        <button type="submit" className='btn btn-primary my-2 mx-2'>Submit</button>
-                    </form>
-                    <button onClick={() => document.getElementById('order-booking-modal').close()} className='btn btn-accent my-2 mx-2'> Cancel</button>
+    if (products.length >= 1) {
+        return (
+            <div className='px-7 pt-' style={{ backgroundImage: 'url(https://i.ibb.co/nD9XVBy/622956.webp)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
+                <h1 className="text-4xl text-cyan-300 font-bold font-sans" style={{
+                    textShadow: `2px 2px 2px #080808`
+                }} >Advertised Products</h1>
+                <div className='mt-10 my-0 mx-auto'>
+                    <Carousel responsive={responsive} containerClass='center-carousel' slidesToSlide={1} swipeable showDots={true} renderDotsOutside={true} infinite autoPlay>
+                        {
+                            products?.map(product => <AdvertisedItemsCard product={product} handleOrderBook={handleOrderBook} ></AdvertisedItemsCard>)
+                        }
+                    </Carousel>
                 </div>
-            </dialog>
-        </div>
-    );
+                <dialog id="order-booking-modal" className="modal">
+                    <div className="modal-box">
+                        <form onSubmit={handleOrderSubmit}>
+                            <label className="form-control w-full">
+                                <div className="label"><span className="label-text font-semibold">Your Name</span></div>
+                                <input className="input input-bordered w-full" name='userName' value={user?.displayName} readOnly type="text" />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label"><span className="label-text font-semibold">Your Email</span></div>
+                                <input className="input input-bordered w-full" name='userEmail' value={user?.email} readOnly type="email" />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label"><span className="label-text font-semibold">Product Name</span></div>
+                                <input className="input input-bordered w-full" name='productName' value={orderBookingData?.name} readOnly type="text" />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label"><span className="label-text font-semibold">Product Price</span></div>
+                                <input className="input input-bordered w-full" name='price' value={orderBookingData?.resalePrice} readOnly type="number" />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label"><span className="label-text font-semibold">Enter Your Phone</span></div>
+                                <input className="input input-bordered w-full" name='phone' placeholder='Enter your Phone Number Here' type="number" required />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label"><span className="label-text font-semibold">Enter Your Meeting Location</span></div>
+                                <input className="input input-bordered w-full" name='location' placeholder='Enter your meeting location here' type="text" required />
+                            </label>
+                            <button type="submit" className='btn btn-primary my-2 mx-2'>Submit</button>
+                        </form>
+                        <button onClick={() => document.getElementById('order-booking-modal').close()} className='btn btn-accent my-2 mx-2'> Cancel</button>
+                    </div>
+                </dialog>
+            </div>
+        );
+    }
 };
 
 export default AdvertisedItems;

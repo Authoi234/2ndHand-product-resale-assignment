@@ -13,6 +13,8 @@ import SellerRoute from './SellerRoute';
 import MyProducts from "../Pages/Seller/MyProducts/MyProducts";
 import { useEffect } from "react";
 import MyBuyers from "../Pages/Seller/MyBuyers/MyBuyers";
+import AllBuyers from "../Pages/Admin/AllBuyers/AllBuyers";
+import AdminRoute from "./AdminRoute";
 
 const routes = createBrowserRouter([
     {
@@ -67,6 +69,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/myBuyers',
                 element: <SellerRoute><MyBuyers></MyBuyers></SellerRoute>
+            },
+            {
+                path: '/dashboard/allBuyers',
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             }
         ]
     }
