@@ -29,8 +29,7 @@ const DashboardLayout = () => {
         </>}
         {savedUser?.userRole === 'Admin' && <>
             <li className='text-xl'><Link to={'/dashboard/allBuyers'}>All Buyers</Link></li>
-            {/* <li className='text-xl'><Link to={'/dashboard/myProducts'}>My Products</Link></li>
-            <li className='text-xl'><Link to={'/dashboard/myBuyers'}>My Buyers</Link></li> */}
+            <li className='text-xl'><Link to={'/dashboard/allSellers'}>All Sellers</Link></li>
         </>}
     </>
 

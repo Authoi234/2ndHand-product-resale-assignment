@@ -78,6 +78,7 @@ const MyProducts = () => {
                 </table>
             </div>
 
+           
             {modalData && <div>
                 <input type="checkbox" id="confirm-modal" className="modal-toggle" />
                 <div className="modal" role="dialog">

@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import MyBuyers from "../Pages/Seller/MyBuyers/MyBuyers";
 import AllBuyers from "../Pages/Admin/AllBuyers/AllBuyers";
 import AdminRoute from "./AdminRoute";
+import AllSellers from "../Pages/Admin/AllSellers/AllSellers";
 
 const routes = createBrowserRouter([
     {
@@ -73,6 +74,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/allBuyers',
                 element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path: '/dashboard/allSellers',
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             }
         ]
     }

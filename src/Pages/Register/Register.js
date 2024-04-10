@@ -30,11 +30,15 @@ const Register = () => {
         const name = form?.name.value;
         const email = form?.email.value;
         const password = form?.password.value;
+        const phone = form?.phone.value;
+        const address = form?.address.value;
 
         const user = {
             name,
             email,
-            userRole
+            userRole,
+            address,
+            phone
         }
 
         createUser(email, password)
@@ -63,22 +67,30 @@ const Register = () => {
     }
 
     return (
-        <div className='h-[550px] flex justify-center items-center'>
+        <div className=' flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h2 className="text-4xl text-center">Register</h2>
                 <form onSubmit={handleRegister}>
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Name</span></div>
-                        <input className="input input-bordered w-full max-w-xs" type="text" name='name' required />
+                        <input className="input input-bordered w-full max-w-xs" type="text" placeholder='Your Name' name='name' required />
+                    </label>
+                    <label className="form-control w-full max-w-xs">
+                        <div className="label"><span className="label-text font-semibold">Address</span></div>
+                        <input className="input input-bordered w-full max-w-xs" type="text" placeholder='Your Address' name='address' required />
+                    </label>
+                    <label className="form-control w-full max-w-xs">
+                        <div className="label"><span className="label-text font-semibold">Phone</span></div>
+                        <input className="input input-bordered w-full max-w-xs" type="tel" placeholder='**********' name='phone' required />
                     </label>
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Email</span></div>
-                        <input className="input input-bordered w-full max-w-xs" name='email' type="email" required />
+                        <input className="input input-bordered w-full max-w-xs" name='email' placeholder='Your Email' type="email" required />
                     </label>
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Password</span></div>
                         <div className='flex items-center'>
-                            <input className="input input-bordered w-full max-w-xs" name='password' type={passwordType} required />
+                            <input className="input input-bordered w-full max-w-xs" name='password' type={passwordType}  placeholder="Enter Your Password" required />
                             <span className='text-2xl border p-2.5 rounded-r-lg tooltip' data-tip="Password Show/Hide" onClick={handlePasswordShow}>{passwordType === 'text' ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}</span>
                         </div>
                     </label>
