@@ -3,9 +3,10 @@ import { MdEmail, MdPhone } from 'react-icons/md';
 import AdminLoading from '../AdminLoading';
 import { useQuery } from '@tanstack/react-query';
 import ConfirmationModal from '../../../Shared/ConfirmationModal';
+import { toast } from 'react-hot-toast';
 
 const AllSellers = () => {
-    const [modalData, setModalData] = useState();
+    const [modalData, setModalData] = useState(null);
     const { data: allSellers = [], error, isPending, refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
@@ -15,8 +16,18 @@ const AllSellers = () => {
         }
     })
 
-    const handleDelete = () => {
-       
+    const handleDelete = (modalData) => {
+        console.log(modalData)
+        fetch(`http://localhost:5000/user/${modalData._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success(`Seller ${modalData.name} Deleted Successfully`);
+                    refetch();
+                }
+            })
     }
 
     if (isPending) {
@@ -51,12 +62,12 @@ const AllSellers = () => {
                             {
                                 allSellers.map((seller, i) => <>
                                     <tr>
-                                        <th className='font-bold text-xl'>{i+ 1}</th>
+                                        <th className='font-bold text-xl'>{i + 1}</th>
                                         <td className='text-lg font-semibold'>{seller.name}</td>
                                         <td className='text-base font-medium flex items-center'><MdEmail className='mx-2'></MdEmail> {seller.email}</td>
                                         <td className='text-base font-medium'><address>{seller.address}</address></td>
                                         <td className='text-sm font-medium flex items-center'><MdPhone className='mx-2'></MdPhone> {seller.phone}</td>
-                                        <td className=''><label htmlFor='confirm-modal' onClick={() => setModalData(seller)}  className='btn btn-secondary'>Delete</label></td>
+                                        <td className=''><label htmlFor='confirm-modal' onClick={() => setModalData(seller)} className='btn btn-secondary'>Delete</label></td>
                                     </tr>
                                 </>)
                             }
@@ -68,6 +79,7 @@ const AllSellers = () => {
                 message='It will permenently deleted and cant be undone'
                 successAction={handleDelete}
                 successBtnName='Delete'
+                modalData={modalData}
             ></ConfirmationModal>}
         </div >
     );

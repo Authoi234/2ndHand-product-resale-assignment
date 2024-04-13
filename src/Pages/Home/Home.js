@@ -4,7 +4,7 @@ import CarsSample from '../CarsSample/CarsSample';
 import Categories from '../Categories/Categories';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 
-const Home = () => {
+const Home = () => {    
     return (
         <div>
             <div>

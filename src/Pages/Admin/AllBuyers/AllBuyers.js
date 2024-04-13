@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import AdminLoading from '../AdminLoading';
-import { MdEmail, MdNumbers } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
-import { FaLocationDot, FaPhone } from "react-icons/fa6";
+import { MdEmail, MdPhone } from "react-icons/md";
 import '../../../App.css';
+import { toast } from 'react-hot-toast';
+import ConfirmationModal from '../../../Shared/ConfirmationModal';
 
 const AllBuyers = () => {
+    const [modalData, setModalData] = useState(null);
     const { data: allBuyers = [], error, isPending, refetch } = useQuery({
         queryKey: 'allBuyers',
         queryFn: async () => {
@@ -15,6 +16,20 @@ const AllBuyers = () => {
             return data;
         }
     })
+
+    const handleDelete = (modalData) => {
+        console.log(modalData)
+        fetch(`http://localhost:5000/user/${modalData._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success(`Buyer ${modalData.name} Deleted Successfully`);
+                    refetch();
+                }
+            })
+    }
 
     if (isPending) {
         <AdminLoading></AdminLoading>
@@ -32,56 +47,41 @@ const AllBuyers = () => {
                 <div className="divider divider-neutral"></div>
             </div>
             <div >
-                {
-                    allBuyers.map((buyer, i) => <>
-                        <div>
-                            <div className='stats stats-vertical lg:stats-horizontal shadow w-full py-5'>
-                                <div className="stat">
-                                    <div className="stat-figure text-primary ">
-                                        <MdNumbers className='w-8 h-8 text-secondary'></MdNumbers>
-                                    </div>
-                                    <div className="stat-title">Index</div>
-                                    <div className="stat-value text-primary text-xl">{i + 1} No.</div>
-                                    <div className="stat-desc">this is the index of the buyer</div>
-                                </div>
-                                <div className="stat">
-                                    <div className="stat-figure text-primary ">
-                                        <FaUser className='w-8 h-8 text-secondary'></FaUser>
-                                    </div>
-                                    <div className="stat-title">Name</div>
-                                    <div className="stat-value text-primary text-lg">{buyer.name}</div>
-                                    <div className="stat-desc">this is the name of the buyer</div>
-                                </div>
-                                <div className="stat">
-                                    <div className="stat-figure text-primary ">
-                                        <MdEmail className='w-8 h-8 text-secondary'></MdEmail>
-                                    </div>
-                                    <div className="stat-title">Email</div>
-                                    <div className="stat-value text-primary text-lg">{buyer.email}</div>
-                                    <div className="stat-desc">this is the email of the buyer</div>
-                                </div>
-                                <div className="stat">
-                                    <div className="stat-figure text-primary ">
-                                        <FaLocationDot className='w-8 h-8 text-secondary'></FaLocationDot>
-                                    </div>
-                                    <div className="stat-title">Address</div>
-                                    <div className="stat-value text-primary text-lg">{buyer.address}</div>
-                                    <div className="stat-desc">this is the address of the buyer</div>
-                                </div>
-                                <div className="stat">
-                                    <div className="stat-figure text-primary ">
-                                        <FaPhone className='w-8 h-8 text-secondary'></FaPhone>
-                                    </div>
-                                    <div className="stat-title">Phone</div>
-                                    <div className="stat-value text-primary text-lg">{buyer.phone}</div>
-                                    <div className="stat-desc">this is the phone of the buyer</div>
-                                </div>
-                            </div>
-                            <div className="divider divider-primary"></div>
-                        </div>
-                    </>)
-                }
+                <div className='overflow-x-auto'>
+                    <table className='table table-zebra'>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th className='text-lg'>Name</th>
+                                <th className='text-lg'>Email</th>
+                                <th className='text-lg'>Address</th>
+                                <th className='text-lg'>phone</th>
+                                <th className='text-lg'>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                allBuyers.map((buyer, i) => <>
+                                    <tr>
+                                        <th className='font-bold text-xl'>{i + 1}</th>
+                                        <td className='text-lg font-semibold'>{buyer.name}</td>
+                                        <td className='text-base font-medium flex items-center'><MdEmail className='mx-2'></MdEmail> {buyer.email}</td>
+                                        <td className='text-base font-medium'><address>{buyer.address}</address></td>
+                                        <td className='text-sm font-medium flex items-center'><MdPhone className='mx-2'></MdPhone> {buyer.phone}</td>
+                                        <td className=''><label htmlFor='confirm-modal' onClick={() => setModalData(buyer)} className='btn btn-secondary'>Delete</label></td>
+                                    </tr>
+                                </>)
+                            }
+                        </tbody>
+                    </table >
+                </div>
             </div>
+            {modalData && <ConfirmationModal title={'Are you Sure? You want to delete'}
+                message='It will permenently deleted and cant be undone'
+                successAction={handleDelete}
+                successBtnName='Delete'
+                modalData={modalData}
+            ></ConfirmationModal>}
         </div>
     );
 };
