@@ -11,11 +11,11 @@ import BuyerRoute from "./BuyerRoute";
 import AddProduct from "../Pages/Seller/AddProduct/AddProduct";
 import SellerRoute from './SellerRoute';
 import MyProducts from "../Pages/Seller/MyProducts/MyProducts";
-import { useEffect } from "react";
 import MyBuyers from "../Pages/Seller/MyBuyers/MyBuyers";
 import AllBuyers from "../Pages/Admin/AllBuyers/AllBuyers";
 import AdminRoute from "./AdminRoute";
 import AllSellers from "../Pages/Admin/AllSellers/AllSellers";
+import Error404Page from "../Pages/errorpage/Error404Page";
 
 const routes = createBrowserRouter([
     {
@@ -80,6 +80,10 @@ const routes = createBrowserRouter([
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <Error404Page></Error404Page>
     }
 ]);
 
