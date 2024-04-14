@@ -16,6 +16,7 @@ import AllBuyers from "../Pages/Admin/AllBuyers/AllBuyers";
 import AdminRoute from "./AdminRoute";
 import AllSellers from "../Pages/Admin/AllSellers/AllSellers";
 import Error404Page from "../Pages/errorpage/Error404Page";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const routes = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
             {
                 path: '/myorders',
                 element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
             }
         ]
     },

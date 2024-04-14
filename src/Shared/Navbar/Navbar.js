@@ -24,6 +24,7 @@ const Navbar = () => {
 
     const menuData = <> 
         <li key={1} className='list-item list-hover-animation my-1 mx-1'><Link to="/">Home</Link></li>
+        <li key={2} className='list-item list-hover-animation my-1 mx-1'><Link to={'/blogs'}>Blogs</Link></li>
         {user?.uid ?
             <>
                 {savedUser?.userRole === 'Buyer' && <>
@@ -35,9 +36,9 @@ const Navbar = () => {
                 {savedUser?.userRole === 'Admin' && <>
                     <li key={3} className='list-hover-animation my-1 list-item mx-1'><Link to='/dashboard/allBuyers'>Dashboard</Link></li>
                 </>}
-                <li key={2} className='list-hover-animation my-1 mx-1'><button className='bg-primary text-white' to="/login" onClick={handleLogOut}>Logout</button></li>
+                <li key={6} className='list-hover-animation my-1 mx-1'><button className='bg-primary text-white' to="/login" onClick={handleLogOut}>Logout</button></li>
             </> :
-            <li key={4} className='list-item list-hover-animation my-1 mx-1'><Link to="/login">Login</Link></li>
+            <li key={6} className='list-item list-hover-animation my-1 mx-1'><Link to="/login">Login</Link></li>
         }
     </>
     return (

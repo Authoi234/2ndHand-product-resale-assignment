@@ -71,7 +71,7 @@
 }
 
 #preloader{
-  background: rgba(0, 0, 0) url('./assets//images//spiral-css-preloader-unscreen.gif') no-repeat center center;
+  background: black url('./assets//images//spiral-css-preloader-unscreen.gif') no-repeat center center;
   background-size: 50%;
   position: fixed;
   z-index: 100;
