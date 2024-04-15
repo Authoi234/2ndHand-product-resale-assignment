@@ -11,7 +11,7 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                 <Tilt scale={1.05} glareEnable={true} glareMaxOpacity={0.8} glareColor="white" glarePosition="all" glareBorderRadius="20px" className="background-stripes parallax-effect" perspective={700}>
                     <figure><img src={product.img} alt="" /></figure>
                     <div className="card-body">
-                        <h2 className="card-title text-white cursor-pointer font-mono underline decoration-black underline-offset-4 font-bold" style={{ fontFamily: 'cursive' }}><Link to={''}>{product.name}</Link></h2>
+                        <h2 className="card-title text-white cursor-pointer font-mono underline decoration-black underline-offset-4 font-bold" style={{ fontFamily: 'cursive' }}><Link to={`/categoryItem/${product._id}`}>{product.name}</Link></h2>
                         <div className='text-start font-bold'>
                             <p className="text-lg text-white">Location: <span className="text-orange-500">{product.location}</span></p>
                             <p className="text-white text-lg mt-3">Resale Price: <span className="text-orange-600">$ {product.resalePrice}</span></p>
@@ -30,7 +30,7 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                 </Tilt>
                 <div className='mb-5 -mt-1'>
                     <p className="text-lg font-semibold my-2 text-white">Sale Status: {product.status}</p>
-                    <Link to={''} className='btn btn-secondary'>Detail</Link>
+                    <Link to={`/categoryItem/${product._id}`} className='btn btn-secondary'>Detail</Link>
                     <div className="divider"></div>
                     <button className=" btn btn-outline btn-secondary" onClick={() => handleOrderBook(product)} disabled={ product.status === 'sold' && true}>Book Now</button>
                 </div>
