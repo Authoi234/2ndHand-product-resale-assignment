@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import AllSellers from "../Pages/Admin/AllSellers/AllSellers";
 import Error404Page from "../Pages/errorpage/Error404Page";
 import Blogs from "../Pages/Blogs/Blogs";
+import CategoryItemDetailPage from "../Shared/Category/CategoryItemDetailPage";
 
 const routes = createBrowserRouter([
     {
@@ -36,6 +37,13 @@ const routes = createBrowserRouter([
                 element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
                 loader: ({params}) =>{
                     return fetch(`http://localhost:5000/category/${params.id}`);
+                }
+            },
+            {
+                path: '/categoryItem/:id',
+                element: <CategoryItemDetailPage></CategoryItemDetailPage>,
+                loader: ({params}) => {
+                    return fetch(`http://localhost:5000/product/${params.id}`)
                 }
             },
             {
