@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 const CategoryItems = () => {
     const [orderBookingData, setOrderBookingData] = useState(null);
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
     const data = useLoaderData();
     console.log(data);
 
