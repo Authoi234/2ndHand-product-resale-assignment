@@ -18,6 +18,7 @@ import AllSellers from "../Pages/Admin/AllSellers/AllSellers";
 import Error404Page from "../Pages/errorpage/Error404Page";
 import Blogs from "../Pages/Blogs/Blogs";
 import CategoryItemDetailPage from "../Shared/Category/CategoryItemDetailPage";
+import ReportedItems from "../Pages/Admin/ReportedItems/ReportedItems";
 
 const routes = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/allSellers',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+            },
+            {
+                path:'dashbaord/reportedItems',
+                element: <ReportedItems></ReportedItems>
             }
         ]
     },
