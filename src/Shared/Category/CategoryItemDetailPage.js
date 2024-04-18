@@ -62,7 +62,8 @@ const CategoryItemDetailPage = () => {
             </div>
             <div className='w-5/12 mx-auto text-start'>
                 <p className="text-md font-mono font-medium">Posted on {data.timeWhenItPosted}</p>
-                <div className="flex justify-between items-center"><h3 className="text-4xl font-mono font-bold">{data.name}</h3> <button className='btn btn-success btn-outline' onClick={() => handleOrderBook(data)} disabled={(data.status === 'sold' && true) || btnDisabled === true}>Book Now</button></div>
+                <p className="text-md font-medium">Cars Condition: {data.conditionType}</p>
+                <div className="flex justify-between items-center"><h3 className="text-4xl font-mono font-bold">{data.name}</h3> <button className='btn btn-success btn-outline' onClick={() => handleOrderBook(data)} disabled={(data.status === 'sold' && true) ||  (btnDisabled === true && true)}>Book Now</button></div>
                 <div className="divider"></div>
                 <p className='text-lg font-semibold'>Sellers Name</p>
                 <h5 className="text-2xl font-semibold">{data.sellersName}</h5>
