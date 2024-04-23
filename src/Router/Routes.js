@@ -94,7 +94,7 @@ const routes = createBrowserRouter([
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
-                path:'dashbaord/reportedItems',
+                path:'/dashboard/reportedItems',
                 element: <ReportedItems></ReportedItems>
             }
         ]

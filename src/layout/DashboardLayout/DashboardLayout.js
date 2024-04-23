@@ -30,6 +30,7 @@ const DashboardLayout = () => {
         {savedUser?.userRole === 'Admin' && <>
             <li className='text-xl'><Link to={'/dashboard/allBuyers'}>All Buyers</Link></li>
             <li className='text-xl'><Link to={'/dashboard/allSellers'}>All Sellers</Link></li>
+            <li className='text-xl'><Link to={'/dashboard/reportedItems'}>Reported Items</Link></li>
         </>}
     </>
 

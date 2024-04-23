@@ -5,13 +5,16 @@ import { useLoaderData } from 'react-router-dom';
 import { BiDetail } from "react-icons/bi";
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
+import ConfirmationModal from '../ConfirmationModal';
 
 const CategoryItemDetailPage = () => {
     const [orderBookingData, setOrderBookingData] = useState(null);
-    const [btnDisabled, setBtnDisabled] = useState(false)
+    const [btnDisabled, setBtnDisabled] = useState(false);
+    const [btnRDisabled, setBtnRDisabled] = useState(false);
+    const [reportModalData, setReportModalData] = useState(null);
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
-    console.log(data)
+    // console.log(data)
 
     const handleOrderBook = (orderData) => {
         setOrderBookingData(orderData);
@@ -52,25 +55,43 @@ const CategoryItemDetailPage = () => {
             .catch(err => console.log(err.message));
     };
 
+    const handleReport = (modalData) => {
+        console.log(modalData)
+        fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    setBtnRDisabled(true)
+                    toast.success(`${modalData.name} was reported to admin Successfully`);
+                }
+            })
+    }
+
     return (
-        <div className='flex justify-center items-center'>
-            <div className='w-5/12 mx-auto text-start'>
+        <div className='lg:flex lg:justify-center lg:items-center'>
+            <div className='lg:w-5/12 w-auto mx-16 lg:mx-auto text-start'>
+                <p className="text-red-500">⚠ This Product is Reported</p>
                 <img className='w-full' src={data.img} alt="" />
-                <div className="divider"><BiDetail className='text-6xl'></BiDetail></div>
+                <div className="divider lg:hidden"><BiDetail className='text-6xl'></BiDetail></div>
                 <p className='text-lg font-semibold'>Sellers Discription</p>
                 <h5 className="text-xl font-bold">{data.discription}</h5>
+                <div className="divider divider-success flex lg:hidden"></div>
             </div>
-            <div className='w-5/12 mx-auto text-start'>
+            <div className='lg:w-5/12 w-auto lg:mx-auto mx-10 lg:text-start text-center'>
                 <p className="text-md font-mono font-medium">Posted on {data.timeWhenItPosted}</p>
                 <p className="text-md font-medium">Cars Condition: {data.conditionType}</p>
-                <div className="flex justify-between items-center"><h3 className="text-4xl font-mono font-bold">{data.name}</h3> <button className='btn btn-success btn-outline' onClick={() => handleOrderBook(data)} disabled={(data.status === 'sold' && true) ||  (btnDisabled === true && true)}>Book Now</button></div>
+                <div className="sm:flex justify-between items-center"><h3 className="text-4xl font-mono font-bold">{data.name}</h3> <div><label htmlFor='confirm-modal' onClick={() => setReportModalData(data)} className='btn btn-error text-white mx-1' disabled={ (data.isReported === true && true) || btnRDisabled === true}>Report To Admin</label> <button className='btn btn-success btn-outline mx-1' onClick={() => handleOrderBook(data)} disabled={(data.status === 'sold' && true) ||  (btnDisabled === true && true)}>Book Now</button></div></div>
                 <div className="divider"></div>
                 <p className='text-lg font-semibold'>Sellers Name</p>
                 <h5 className="text-2xl font-semibold">{data.sellersName}</h5>
-                <p className='text-lg font-semibold'>Location</p>
-                <h5 className="text-xl font-semibold">{data.location}</h5>
-                <p className='text-lg font-semibold'>Location</p>
-                <h5 className="text-xl font-semibold">{data.location}</h5>
+                <p className='text-md font-semibold'>Location</p>
+                <h5 className="text-lg font-semibold">{data.location}</h5>
+                <p className='text-md font-semibold'>Email</p>
+                <h5 className="text-lg font-semibold">{data.email}</h5>
+                <p className='text-md font-semibold'>Phone</p>
+                <h5 className="text-lg font-semibold">{data.mobile}</h5>
                 <div className="divider">
                     <MdOutlineDateRange className='text-amber-500 text-6xl'></MdOutlineDateRange>
                 </div>
@@ -89,9 +110,9 @@ const CategoryItemDetailPage = () => {
                     <FaDollarSign className='text-green-500 text-3xl'></FaDollarSign>
                 </div>
                 <div className='flex justify-between items-center'>
-                    <h5 className='text-xl text-green-400 mx-3'>Resale Price: {data.resalePrice}</h5>
+                    <h5 className='text-xl text-green-400 mx-3'>Resale Price: {data.resalePrice}$</h5>
                     <div className="divider divider-horizontal divider-success"></div>
-                    <h5 className='text-xl text-green-400 mx-3'>Original Price: {data.originalPrice}</h5>
+                    <h5 className='text-xl text-green-400 mx-3'>Original Price: {data.originalPrice}$</h5>
                 </div>
             </div>
             <dialog id="order-booking-modal-on-detail-page" className="modal">
@@ -126,6 +147,12 @@ const CategoryItemDetailPage = () => {
                     <button onClick={() => document.getElementById('order-booking-modal-on-detail-page').close()} className='btn btn-accent my-2 mx-2'> Cancel</button>
                 </div>
             </dialog>
+            {reportModalData && <ConfirmationModal title={'Are you Sure? You want to Report to Admin about this product'}
+                message='it will be reported and cant be trusted and admin can delete it. if there are any problem in this product report'
+                successAction={handleReport}
+                successBtnName='Report'
+                modalData={reportModalData}
+            ></ConfirmationModal>}
         </div>
     );
 };

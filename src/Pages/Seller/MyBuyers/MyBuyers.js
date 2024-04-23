@@ -37,6 +37,8 @@ const MyBuyers = () => {
                             <th><p className="text-lg"></p></th>
                             <th><p className="text-lg">Name</p></th>
                             <th><p className="text-lg">Email</p></th>
+                            <th><p className="text-lg">Phone</p></th>
+                            <th><p className="text-lg">Address</p></th>
                         </tr>
                     </thead>
                     <tbody>

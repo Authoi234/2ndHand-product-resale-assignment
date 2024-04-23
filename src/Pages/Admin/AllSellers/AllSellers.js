@@ -4,6 +4,7 @@ import AdminLoading from '../AdminLoading';
 import { useQuery } from '@tanstack/react-query';
 import ConfirmationModal from '../../../Shared/ConfirmationModal';
 import { toast } from 'react-hot-toast';
+import { FaCheck } from 'react-icons/fa';
 
 const AllSellers = () => {
     const [deleteModalData, setDeleteModalData] = useState(null);
@@ -61,7 +62,7 @@ const AllSellers = () => {
                 <div className="divider divider-neutral"></div>
             </div>
             <div >
-                <div className='overflow-x-auto'>
+                <div className='overflow-x-visible'>
                     <table className='table table-zebra'>
                         <thead>
                             <tr>
@@ -79,7 +80,7 @@ const AllSellers = () => {
                                 allSellers?.map((seller, i) => <>
                                     <tr>
                                         <th className='font-bold text-xl'>{i + 1}</th>
-                                        <td className='text-lg font-semibold'>{seller.name}</td>
+                                        <td className='text-lg font-semibold'><div className='flex items-center'><FaCheck className='text-white text-xl bg-blue-500 mask mask-decagon p-1 mx-0.5'></FaCheck> {seller.name}</div></td>
                                         <td className='text-base font-medium flex items-center'><MdEmail className='mx-2'></MdEmail> {seller.email}</td>
                                         <td className='text-base font-medium'><address>{seller.address}</address></td>
                                         <td className='text-sm font-medium flex items-center'><MdPhone className='mx-2'></MdPhone> {seller.phone}</td>

@@ -9,7 +9,7 @@ import ConfirmationModal from '../../../Shared/ConfirmationModal';
 const AllBuyers = () => {
     const [modalData, setModalData] = useState(null);
     const { data: allBuyers = [], error, isPending, refetch } = useQuery({
-        queryKey: 'allBuyers',
+        queryKey: ['allBuyers'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/allBuyers');
             const data = res.json();
@@ -81,7 +81,7 @@ const AllBuyers = () => {
                 successAction={handleDelete}
                 successBtnName='Delete'
                 modalData={modalData}
-            ></ConfirmationModal>}
+            ></ConfirmationModal>}  
         </div>
     );
 };

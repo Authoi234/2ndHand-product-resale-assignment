@@ -26,7 +26,7 @@ const Blogs = () => {
     return (
         <div className='mx-10'>
             <div className="collapse collapse-plus bg-red-400">
-                <input type="radio" name="blogs-accordion" defaultChecked />
+                <input type="radio" name="blogs-accordion" defaultChecked/>
                 <div className="collapse-title text-2xl font-medium text-white">
                     What are the different ways to manage a state in a React application?
                 </div>

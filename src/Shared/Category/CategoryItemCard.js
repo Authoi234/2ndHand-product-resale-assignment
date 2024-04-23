@@ -30,6 +30,7 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                 <Tilt scale={1.05} glareEnable={true} glareMaxOpacity={0.8} glareColor="white" glarePosition="all" glareBorderRadius="20px" className="background-stripes parallax-effect" perspective={700}>
                     <figure><Link to={`/categoryItem/${product._id}`}><img src={product.img} alt="" /></Link></figure>
                     <div className="card-body">
+                        {product.isReported && <p className="text-red-500">⚠ This product is Reported</p>}
                         <h2 className="card-title text-white cursor-pointer font-mono underline underline-offset-4 font-bold decoration-blue-800" style={{ fontFamily: 'cursive' }}><Link to={`/categoryItem/${product._id}`}>{product.name}</Link></h2>
                         <div className='text-start font-bold'>
                             <p className="text-lg text-white">Location: <span className="text-orange-500">{product.location.toString().slice(0, 5)}...<Link className='underline text-black font-normal text-base' to={`/categoryItem/${product._id}`}>See More</Link></span></p>
