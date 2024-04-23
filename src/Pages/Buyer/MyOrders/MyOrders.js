@@ -23,8 +23,8 @@ const MyOrders = () => {
                         <th><p className="text-xl">Image</p></th>
                         <th><p className="text-xl">title</p></th>
                         <th><p className="text-xl">Price</p></th>
-                        <th><p className="text-xl">Condition</p></th>
-                        <th><p className="text-xl">condition</p></th>
+                        <th><p className="text-xl">Phone</p></th>
+                        <th><p className="text-xl">Email</p></th>
                         <th><p className="text-xl">Payments</p></th>
                     </tr>
                 </thead>
@@ -34,8 +34,8 @@ const MyOrders = () => {
                         <td><img className='avatar w-20 rounded-3xl' src={order?.img} alt="" /></td>
                         <td>{order?.productName}</td>
                         <td>{order?.price}</td>
-                        <td>{order?.condition}</td>
-                        <td>{order?.price}</td>
+                        <td>{order?.phone}</td>
+                        <td>{order?.sellersEmail}</td>
                         <td><button className="btn btn-primary">Pay</button></td>
                     </tr>)}
                 </tbody>
