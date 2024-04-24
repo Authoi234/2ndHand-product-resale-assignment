@@ -20,7 +20,7 @@ const AllSellers = () => {
 
     const handleDelete = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/user/${modalData._id}`, {
+        fetch(`http://localhost:5000/user/${modalData?._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -33,7 +33,7 @@ const AllSellers = () => {
     }
 
     const handleVerify = (modalData) => {
-        fetch(`http://localhost:5000/verifyUser/${modalData._id}`, {
+        fetch(`http://localhost:5000/verifyUser/${modalData?._id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

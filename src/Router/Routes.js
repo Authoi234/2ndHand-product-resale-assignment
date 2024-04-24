@@ -19,6 +19,7 @@ import Error404Page from "../Pages/errorpage/Error404Page";
 import Blogs from "../Pages/Blogs/Blogs";
 import CategoryItemDetailPage from "../Shared/Category/CategoryItemDetailPage";
 import ReportedItems from "../Pages/Admin/ReportedItems/ReportedItems";
+import Payment from "../Pages/Buyer/Payments/Payment";
 
 const routes = createBrowserRouter([
     {
@@ -36,14 +37,14 @@ const routes = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
-                loader: ({params}) =>{
+                loader: ({ params }) => {
                     return fetch(`http://localhost:5000/category/${params.id}`);
                 }
             },
             {
                 path: '/categoryItem/:id',
                 element: <CategoryItemDetailPage></CategoryItemDetailPage>,
-                loader: ({params}) => {
+                loader: ({ params }) => {
                     return fetch(`http://localhost:5000/product/${params.id}`)
                 }
             },
@@ -94,8 +95,13 @@ const routes = createBrowserRouter([
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
-                path:'/dashboard/reportedItems',
+                path: '/dashboard/reportedItems',
                 element: <ReportedItems></ReportedItems>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`)
             }
         ]
     },

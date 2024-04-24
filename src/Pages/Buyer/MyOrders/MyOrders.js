@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../Contexts/AuthContextProvider';
+import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
@@ -36,7 +37,7 @@ const MyOrders = () => {
                         <td>{order?.price}</td>
                         <td>{order?.phone}</td>
                         <td>{order?.sellersEmail}</td>
-                        <td><button className="btn btn-primary">Pay</button></td>
+                        <td>{ order?.paid ? <p className='text-lg'>Paid</p> : <Link className="btn btn-primary" to={`/dashboard/payment/${order._id}`}>Pay</Link>}</td>
                     </tr>)}
                 </tbody>
             </table>

@@ -88,7 +88,7 @@ const Blogs = () => {
                                         fill="#8884d8"
                                         label
                                     >
-                                        {chartData.map((entry, index) => (
+                                        {chartData?.map((entry, index) => (
                                             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                                         ))}
                                     </Pie>

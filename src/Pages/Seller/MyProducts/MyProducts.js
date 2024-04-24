@@ -65,7 +65,7 @@ const MyProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product, i) => <tr>
+                        {products?.map((product, i) => <tr>
                             <th>{i + 1}</th>
                             <td><img className='avatar w-20 rounded-full' src={product?.img} alt="" /></td>
                             <td className='font-bold'>{product?.name}</td>

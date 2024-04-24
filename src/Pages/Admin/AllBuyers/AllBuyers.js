@@ -19,7 +19,7 @@ const AllBuyers = () => {
 
     const handleDelete = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/user/${modalData._id}`, {
+        fetch(`http://localhost:5000/user/${modalData?._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -61,7 +61,7 @@ const AllBuyers = () => {
                         </thead>
                         <tbody>
                             {
-                                allBuyers.map((buyer, i) => <>
+                                allBuyers?.map((buyer, i) => <>
                                     <tr>
                                         <th className='font-bold text-xl'>{i + 1}</th>
                                         <td className='text-lg font-semibold'>{buyer.name}</td>

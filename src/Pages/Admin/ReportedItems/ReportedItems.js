@@ -19,7 +19,7 @@ const ReportedItems = () => {
 
     const handleDelete = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/reportedProducts/${modalData._id}`, {
+        fetch(`http://localhost:5000/reportedProducts/${modalData?._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
