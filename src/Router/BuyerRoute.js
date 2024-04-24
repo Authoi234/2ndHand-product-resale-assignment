@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Contexts/AuthContextProvider';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 const BuyerRoute = ({children}) => {
     const {user} = useContext(AuthContext);

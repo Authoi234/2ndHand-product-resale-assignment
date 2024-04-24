@@ -9,7 +9,7 @@ const MyBuyerRow = ({ index, myBuyer }) => {
             <td><h1 className="font-semibold text-xl">{myBuyer.name}</h1></td>
             <td><h1 className="font-semibold text-xl">{myBuyer.email}</h1></td>
             <td><h1 className="font-semibold text-xl">{myBuyer.phone}</h1></td>
-            <td><h1 className="font-semibold text-xl">{myBuyer.address}</h1></td>
+            <td><h1 className="font-semibold text-xl">{myBuyer.location}</h1></td>
         </tr>
     );
 };

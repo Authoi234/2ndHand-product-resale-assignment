@@ -1,4 +1,5 @@
 import React from 'react';
+import loadingIcon from '../../assets/images/loading.svg'
 
 const Loading = () => {
     return (
@@ -21,7 +22,7 @@ const Loading = () => {
                 <div className="skeleton h-6 w-full"></div>
                 <div className="skeleton h-6 w-full"></div>
             </div>
-            <img className="w-20 h-20 animate-spin absolute" src="https://www.svgrepo.com/show/70469/loading.svg" alt="Loading icon"></img>
+            <img className="w-20 h-20 animate-spin absolute" src={loadingIcon} alt=''></img>
         </div>
     );
 };
