@@ -1,4 +1,5 @@
 import React from 'react';
+import video from '../../assets/videos/lamborghini.mp4';
 
 const CarsSample = () => {
     return (
@@ -11,8 +12,8 @@ const CarsSample = () => {
                         <h4 className="text-2xl my-2">Any Car not have a single scratch</h4>
                         <h4 className="text-2xl my-2">We have cars of many companies. Eg. Tesla, Lamborghini, Ferrari, Toyota Fortuner and more.</h4>
                     </div>
-                    <video className='lg:w-[50%] w-full hero-overlay' height={1000} autoPlay loop muted>
-                        <source src={require('../../assets/videos/lamborghini.mp4')} type='video/mp4' />
+                    <video className='lg:w-1/2 w-full hero-overlay' height={1000} autoPlay loop muted>
+                        <source src={video} type='video/mp4' />
                     </video>
                 </div>
         </div>

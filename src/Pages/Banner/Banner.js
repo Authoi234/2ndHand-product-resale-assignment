@@ -1,4 +1,5 @@
 import React from 'react';
+import video from '../../assets/videos/teslaBannerVideo.mp4'
 
 const Banner = () => {
     return (
@@ -16,7 +17,7 @@ const Banner = () => {
                 </div>
             </div>
             <video className='mb-10 w-full hero-overlay h-full' autoPlay loop muted>
-                <source src={require('../../assets/videos/Introducing_ Upgraded Model 3.mp4')} type='video/mp4' />
+                <source src={video} type='video/mp4' />
             </video>
             <div className="divider divdier-neutral"></div>
         </div>

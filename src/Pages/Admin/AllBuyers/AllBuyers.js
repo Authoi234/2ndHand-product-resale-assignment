@@ -12,7 +12,7 @@ const AllBuyers = () => {
         queryKey: ['allBuyers'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/allBuyers');
-            const data = res.json();
+            const data = await res.json();
             return data;
         }
     })

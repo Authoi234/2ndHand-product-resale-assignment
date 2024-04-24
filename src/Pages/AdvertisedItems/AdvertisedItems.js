@@ -130,7 +130,7 @@ const AdvertisedItems = () => {
                             </label>
                             <label className="form-control w-full">
                                 <div className="label"><span className="label-text font-semibold">Enter Your Phone</span></div>
-                                <input className="input input-bordered w-full" name='phone' placeholder='Enter your Phone Number Here' type="number" required />
+                                <input className="input input-bordered w-full" name='phone' placeholder='Enter your Phone Number Here' type="tel" required />
                             </label>
                             <label className="form-control w-full">
                                 <div className="label"><span className="label-text font-semibold">Enter Your Meeting Location</span></div>

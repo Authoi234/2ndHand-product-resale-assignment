@@ -11,7 +11,7 @@ const MyProducts = () => {
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/myProducts/${user?.email}`);
-            const data = res.json();
+            const data = await res.json();
             return data;
         }
     })
