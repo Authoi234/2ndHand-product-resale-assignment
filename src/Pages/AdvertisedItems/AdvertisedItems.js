@@ -48,7 +48,8 @@ const AdvertisedItems = () => {
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(bookingData)
         })

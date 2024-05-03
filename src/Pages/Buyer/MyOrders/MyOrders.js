@@ -7,7 +7,11 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
 
-    axios.get(`http://localhost:5000/orders/${user?.email}`)
+    axios.get(`http://localhost:5000/orders/${user?.email}`, {
+        headers: {
+            jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
         .then(function (response) {
             setOrders(response?.data);
         })
@@ -37,7 +41,7 @@ const MyOrders = () => {
                         <td>{order?.price}</td>
                         <td>{order?.phone}</td>
                         <td>{order?.sellersEmail}</td>
-                        <td>{ order?.paid ? <p className='text-lg'>Paid</p> : <Link className="btn btn-primary" to={`/dashboard/payment/${order._id}`}>Pay</Link>}</td>
+                        <td>{order?.paid ? <p className='text-lg'>Paid</p> : <Link className="btn btn-primary" to={`/dashboard/payment/${order._id}`}>Pay</Link>}</td>
                     </tr>)}
                 </tbody>
             </table>

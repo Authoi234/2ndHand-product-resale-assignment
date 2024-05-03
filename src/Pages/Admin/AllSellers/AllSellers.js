@@ -12,7 +12,11 @@ const AllSellers = () => {
     const { data: allSellers = [], error, isPending, refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allSellers');
+            const res = await fetch('http://localhost:5000/allSellers', {
+                headers: {
+                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -21,7 +25,10 @@ const AllSellers = () => {
     const handleDelete = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/user/${modalData?._id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -34,7 +41,10 @@ const AllSellers = () => {
 
     const handleVerify = (modalData) => {
         fetch(`http://localhost:5000/verifyUser/${modalData?._id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -80,7 +90,7 @@ const AllSellers = () => {
                                 allSellers?.map((seller, i) => <>
                                     <tr>
                                         <th className='font-bold text-xl'>{i + 1}</th>
-                                        <td className='text-lg font-semibold'><div className='flex items-center'><FaCheck className='text-white text-xl bg-blue-500 mask mask-decagon p-1 mx-0.5'></FaCheck> {seller.name}</div></td>
+                                        <td className='text-lg font-semibold'><div className='flex items-center'>{seller?.isUserVerified && <FaCheck className='text-white text-xl bg-blue-500 mask mask-decagon p-1 mx-0.5'></FaCheck>} {seller.name}</div></td>
                                         <td className='text-base font-medium flex items-center'><MdEmail className='mx-2'></MdEmail> {seller.email}</td>
                                         <td className='text-base font-medium'><address>{seller.address}</address></td>
                                         <td className='text-sm font-medium flex items-center'><MdPhone className='mx-2'></MdPhone> {seller.phone}</td>

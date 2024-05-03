@@ -10,7 +10,11 @@ const MyProducts = () => {
     const { data: products = [], isPending, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myProducts/${user?.email}`);
+            const res = await fetch(`http://localhost:5000/myProducts/${user?.email}`, {
+                headers: {
+                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -19,7 +23,10 @@ const MyProducts = () => {
 
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/products/${id}`, {
-            method: 'Delete'
+            method: 'Delete',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -31,7 +38,10 @@ const MyProducts = () => {
     const handleAdvertise = (id) => {
         if (window.confirm('Are you sure? you want to Advertise🎉?') === true) {
             fetch(`http://localhost:5000/setAdvertised/${id}`, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -78,7 +88,7 @@ const MyProducts = () => {
                 </table>
             </div>
 
-           
+
             {modalData && <div>
                 <input type="checkbox" id="confirm-modal" className="modal-toggle" />
                 <div className="modal" role="dialog">

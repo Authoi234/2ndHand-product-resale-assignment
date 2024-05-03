@@ -106,12 +106,16 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/reportedItems',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             },
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`,{
+                    headers: {
+                        jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
             }
         ]
     },

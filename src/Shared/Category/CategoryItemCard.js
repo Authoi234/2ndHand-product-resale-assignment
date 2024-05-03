@@ -13,7 +13,10 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
     const handleReport = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

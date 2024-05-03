@@ -9,15 +9,19 @@ const MyBuyers = () => {
     const [buyersLoading, setBuyersLoading] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myBuyers/${user.email}`)
-        .then(res => {
-            setBuyersLoading(true);
-            return res.json();
+        fetch(`http://localhost:5000/myBuyers/${user.email}`, {
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
-        .then(data => {
-            setMyBuyers(data);
-            return setBuyersLoading(false);
-        })
+            .then(res => {
+                setBuyersLoading(true);
+                return res.json();
+            })
+            .then(data => {
+                setMyBuyers(data);
+                return setBuyersLoading(false);
+            })
     }, [user.email]);
 
     console.log(myBuyers)

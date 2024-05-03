@@ -16,7 +16,7 @@ const Register = () => {
 
     useEffect(() => {
         if (createdUserEmail) {
-            fetch(`http://localhost:5000/jwt?email=${createdUserEmail}`)
+            fetch(`http://localhost:5000/jwt/${createdUserEmail}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {

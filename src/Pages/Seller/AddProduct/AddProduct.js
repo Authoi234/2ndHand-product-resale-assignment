@@ -35,7 +35,7 @@ const AddProduct = () => {
         const yearOfPurchase = parseInt(data?.yearofbuy);
         const mobile = parseInt(data?.mobile);
         const email = user?.email;
-        
+
         fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
             method: 'POST',
             body: formData
@@ -43,10 +43,10 @@ const AddProduct = () => {
             setLoading(true);
             return res.json();
         })
-        .then(result => {
-            console.log(result)
-            if (result?.success || result?.status === 200) {
-                const img = result?.data.url;
+            .then(result => {
+                console.log(result)
+                if (result?.success || result?.status === 200) {
+                    const img = result?.data.url;
 
                     const product = {
                         categoryId,
@@ -70,7 +70,8 @@ const AddProduct = () => {
                     fetch(`http://localhost:5000/addProduct`, {
                         method: 'POST',
                         headers: {
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                         },
                         body: JSON.stringify(product)
                     })
@@ -85,6 +86,10 @@ const AddProduct = () => {
                             setLoading(false);
                         })
                 }
+            })
+            .catch(err => {
+                setLoading(false);
+                toast.success('Please try later. May image bb Web server is down');
             })
     }
 

@@ -8,7 +8,7 @@ const Banner = () => {
                 <h3 className='md:text-white text-5xl font-bold'>2nd Hand Cars Resale</h3>
                 <p className='md:text-white mt-3 text-xl w-1/2'>We Provide Trusted Service. We Sale you second hand products And they are in very good condition. You can trust Us, Trust Out policy.</p>
                 <p className="mt-3 text-lg w-full md:w-1/2 mb-3 md:text-white">We sale 3 types of cars</p>
-                <div className="flex items-center h-2">
+                <div className="flex items-center h-2 mb-5 md:mb-0">
                     <p className="md:text-white text-lg mx-2">Super Cars</p> 
                     <div className="divider divider-horizontal divider-success divider-start"></div>
                     <p className="md:text-white text-lg mx-2">Trucks</p>

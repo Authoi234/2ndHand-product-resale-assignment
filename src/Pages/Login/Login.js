@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "../../App.css"

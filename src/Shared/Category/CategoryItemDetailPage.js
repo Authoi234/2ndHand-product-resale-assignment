@@ -40,7 +40,8 @@ const CategoryItemDetailPage = () => {
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(bookingData)
         })
@@ -58,7 +59,10 @@ const CategoryItemDetailPage = () => {
     const handleReport = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

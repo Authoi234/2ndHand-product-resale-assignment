@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import Loading from '../../../Shared/Loading/Loading';
-import { Carousel } from 'react-multi-carousel';
 import { FaCheck } from 'react-icons/fa';
 import ConfirmationModal from '../../../Shared/ConfirmationModal';
 import toast from 'react-hot-toast';
@@ -11,7 +10,11 @@ const ReportedItems = () => {
     const { data: reportedItems = [], refetch, isPending } = useQuery({
         queryKey: ['reportedItems'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportedProducts');
+            const res = await fetch('http://localhost:5000/reportedProducts', {
+                headers: {
+                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -20,7 +23,10 @@ const ReportedItems = () => {
     const handleDelete = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/reportedProducts/${modalData?._id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -42,7 +48,7 @@ const ReportedItems = () => {
                 <div className="divider divider-neutral"></div>
             </div>
             <div >
-                {reportedItems?.map(item => <>
+                {reportedItems?.map((item, index) => <>
                     <div className="card lg:card-side bg-base-100 shadow-xl text-start border md:my-5 md:mx-5">
                         <div className='flex'>
                             <div className='md:w-96 w-full md:h-80 border-2 mx-3'><img className='w-full h-full' src={item.img} alt="" /></div>
@@ -66,6 +72,7 @@ const ReportedItems = () => {
                             </div>
                         </div>
                         <div className="card-body">
+                            <h2 className="text-2xl font-bold">{index + 1} <div className="divider my-0"></div></h2>
                             <h2 className="text-4xl font-bold">{item.name}</h2>
                             <div className=' md:flex'>
                                 <div className='md:mx-2 font-medium text-lg'>

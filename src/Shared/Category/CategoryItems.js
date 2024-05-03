@@ -35,6 +35,7 @@ const CategoryItems = () => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(bookingData)
         })

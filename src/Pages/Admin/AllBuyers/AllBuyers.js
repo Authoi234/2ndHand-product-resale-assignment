@@ -11,7 +11,11 @@ const AllBuyers = () => {
     const { data: allBuyers = [], error, isPending, refetch } = useQuery({
         queryKey: ['allBuyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allBuyers');
+            const res = await fetch('http://localhost:5000/allBuyers', {
+                headers: {
+                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -20,7 +24,10 @@ const AllBuyers = () => {
     const handleDelete = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/user/${modalData?._id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
