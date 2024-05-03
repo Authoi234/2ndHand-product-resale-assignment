@@ -81,7 +81,7 @@ const AllBuyers = () => {
                 successAction={handleDelete}
                 successBtnName='Delete'
                 modalData={modalData}
-            ></ConfirmationModal>}  
+            ></ConfirmationModal>}
         </div>
     );
 };

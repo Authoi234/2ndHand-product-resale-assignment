@@ -27,14 +27,14 @@ const CategoryItems = () => {
             location: e.target.location.value,
             img: orderBookingData.img,
             name: user.displayName,
-            sellersEmail: orderBookingData.email 
+            sellersEmail: orderBookingData.email
         }
         console.log(bookingData);
 
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                'content-type': 'application/json',
             },
             body: JSON.stringify(bookingData)
         })
@@ -47,6 +47,8 @@ const CategoryItems = () => {
             })
             .catch(err => console.log(err.message));
     }
+
+    console.log(data)
 
     return (
         <div className='my-10'>

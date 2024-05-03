@@ -84,65 +84,65 @@ const Error404Page = () => {
         {/* starts of right side */}
 
         <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
-              <FaStar className='text-yellow-300 absolute animate-spin' style={{
-                top: ranodmNumGenerate(),
-                right: ranodmNumGenerate()
-              }} ></FaStar>
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
+        <FaStar className='text-yellow-300 absolute animate-spin' style={{
+          top: ranodmNumGenerate(),
+          right: ranodmNumGenerate()
+        }} ></FaStar>
 
         <Link to={'/'} className='btn bg-transparent backdrop-blur-lg hover:btn-primary absolute top-1/2 text-black font-bold'>Go Back</Link>
       </div>

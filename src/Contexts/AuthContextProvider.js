@@ -25,13 +25,11 @@ const AuthContextProvider = ({ children }) => {
     }
 
     const logout = () => {
-        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubsrcibe = onAuthStateChanged(auth, currentUser => {
-            console.log('current user observed');
             setUser(currentUser);   
             setLoading(false);
         })

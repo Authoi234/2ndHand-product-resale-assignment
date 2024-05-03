@@ -25,7 +25,7 @@ const Categories = () => {
 
     return (
         <div className='p-5 m-5 glasseffect mb-20'>
-            <h2 className="text-4xl my-5 relative font-semibold">There Are three Categories</h2>
+            <h2 className="text-4xl my-5 relative font-semibold">There Are {categories.length} Categories</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
                     categories?.map(category => <CategoryCard category={category} key={category._id}></CategoryCard>)

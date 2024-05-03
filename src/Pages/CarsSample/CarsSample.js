@@ -10,7 +10,7 @@ const CarsSample = () => {
                         <h4 className="text-2xl my-2">All Cars Are Fully Good Condition And Free Painted 🎨</h4>
                         <h4 className="text-2xl my-2">All Cars Are in full speed. 🏎</h4>
                         <h4 className="text-2xl my-2">Any Car not have a single scratch</h4>
-                        <h4 className="text-2xl my-2">We have cars of many companies. Eg. Tesla, Lamborghini, Ferrari, Toyota Fortuner and more.</h4>
+                        <h4 className="text-2xl my-2">We have cars of many companies. Eg. <span className='font-bold'>Tesla, Lamborghini, McLaren, Ferrari, Bugatti, Audi, Toyota Fortuner, Toyota, Mahindra Scorpio, Mahindra Thar, Land Rover, Land Cruiser, Taka Nano, Tata Punch, Supra, Porsche, Nissan, BMW and more. </span></h4>
                     </div>
                     <video className='lg:w-1/2 w-full hero-overlay' height={1000} autoPlay loop muted>
                         <source src={video} type='video/mp4' />

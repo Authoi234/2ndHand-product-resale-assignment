@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../App.css';
@@ -6,11 +6,30 @@ import { AuthContext } from '../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const { createUser, updateUser } = useContext(AuthContext);
     const [passwordType, setPasswordType] = useState('password');
     const [error, setError] = useState('');
     const [userRole, setUserRole] = useState('Buyer');
     const navigate = useNavigate();
+    const [token, setToken] = useState();
+
+    useEffect(() => {
+        if (createdUserEmail) {
+            fetch(`http://localhost:5000/jwt?email=${createdUserEmail}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.accessToken) {
+                        localStorage.setItem('accessToken', data.accessToken);
+                        setToken(data.accessToken);
+                    }
+                })
+        }
+    }, [createdUserEmail]);
+
+    if (token) {
+        navigate('/')
+    }
 
     const handlePasswordShow = () => {
         if (passwordType === 'password') {
@@ -55,8 +74,8 @@ const Register = () => {
                         })
                             .then(result => {
                                 console.log(result);
+                                setCreatedUserEmail(email);
                                 toast.success('Successfully Sign Up 😊' );
-                                navigate('/home');
 
                             })
                             .catch(err => setError(err.message));

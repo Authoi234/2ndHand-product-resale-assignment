@@ -72,7 +72,7 @@ const CategoryItemDetailPage = () => {
     return (
         <div className='lg:flex lg:justify-center lg:items-center'>
             <div className='lg:w-5/12 w-auto mx-16 lg:mx-auto text-start'>
-                <p className="text-red-500">⚠ This Product is Reported</p>
+                {data.isReported && <p className="text-red-500">⚠ This Product is Reported</p>}
                 <img className='w-full' src={data.img} alt="" />
                 <div className="divider lg:hidden"><BiDetail className='text-6xl'></BiDetail></div>
                 <p className='text-lg font-semibold'>Sellers Discription</p>
@@ -82,7 +82,7 @@ const CategoryItemDetailPage = () => {
             <div className='lg:w-5/12 w-auto lg:mx-auto mx-10 lg:text-start text-center'>
                 <p className="text-md font-mono font-medium">Posted on {data.timeWhenItPosted}</p>
                 <p className="text-md font-medium">Cars Condition: {data.conditionType}</p>
-                <div className="sm:flex justify-between items-center"><h3 className="text-4xl font-mono font-bold">{data.name}</h3> <div><label htmlFor='confirm-modal' onClick={() => setReportModalData(data)} className='btn btn-error text-white mx-1' disabled={ (data.isReported === true && true) || btnRDisabled === true}>Report To Admin</label> <button className='btn btn-success btn-outline mx-1' onClick={() => handleOrderBook(data)} disabled={(data.status === 'sold' && true) ||  (btnDisabled === true && true)}>Book Now</button></div></div>
+                <div className="sm:flex justify-between items-center"><h3 className="text-4xl font-mono font-bold">{data.name}</h3> <div><label htmlFor='confirm-modal' onClick={() => setReportModalData(data)} className='btn btn-error text-white mx-1' disabled={(data.isReported === true && true) || btnRDisabled === true}>Report To Admin</label> <button className='btn btn-success btn-outline mx-1' onClick={() => handleOrderBook(data)} disabled={(data.status === 'sold' && true) || (btnDisabled === true && true)}>Book Now</button></div></div>
                 <div className="divider"></div>
                 <p className='text-lg font-semibold'>Sellers Name</p>
                 <h5 className="text-2xl font-semibold">{data.sellersName}</h5>
