@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { FaDollarSign } from 'react-icons/fa';
 import { MdOutlineDateRange } from "react-icons/md";
-import { useLoaderData } from 'react-router-dom';
+import { Navigate, useLoaderData, useLocation } from 'react-router-dom';
 import { BiDetail } from "react-icons/bi";
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
@@ -12,9 +12,14 @@ const CategoryItemDetailPage = () => {
     const [btnDisabled, setBtnDisabled] = useState(false);
     const [btnRDisabled, setBtnRDisabled] = useState(false);
     const [reportModalData, setReportModalData] = useState(null);
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const data = useLoaderData();
-    // console.log(data)
+    const location = useLocation();
+    console.log(data)
+    
+    if (data.errorMessage) {
+        return logout().then(res => <Navigate to={'/login'} state={{from: location}} replace></Navigate>)
+    }
 
     const handleOrderBook = (orderData) => {
         setOrderBookingData(orderData);
@@ -140,7 +145,7 @@ const CategoryItemDetailPage = () => {
                         </label>
                         <label className="form-control w-full">
                             <div className="label"><span className="label-text font-semibold">Enter Your Phone</span></div>
-                            <input className="input input-bordered w-full" name='phone' placeholder='Enter your Phone Number Here' type="number" required />
+                            <input className="input input-bordered w-full" name='phone' placeholder='Enter your Phone Number Here' type="tel" required />
                         </label>
                         <label className="form-control w-full">
                             <div className="label"><span className="label-text font-semibold">Enter Your Meeting Location</span></div>

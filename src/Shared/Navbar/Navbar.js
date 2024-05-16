@@ -8,7 +8,7 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
 
     const { data: savedUser = [], error } = useQuery({
-        queryKey: ['savedUser', user?.uid],
+        queryKey: ['savedUser', user, user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users/${user?.email}`, {
                 headers: {

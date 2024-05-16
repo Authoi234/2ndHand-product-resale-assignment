@@ -17,7 +17,7 @@ const CategoryItems = () => {
 
     const handleOrderSubmit = (e) => {
         e.preventDefault();
-
+        
         const bookingData = {
             productId: orderBookingData._id,
             email: user.email,
@@ -30,7 +30,7 @@ const CategoryItems = () => {
             sellersEmail: orderBookingData.email
         }
         console.log(bookingData);
-
+        
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
@@ -39,11 +39,11 @@ const CategoryItems = () => {
             },
             body: JSON.stringify(bookingData)
         })
-            .then(result => {
-                console.log(result);
-                if (result.status === 200) {
-                    document.getElementById('order-booking-modal').close();
-                    toast.success(`${orderBookingData.name} is booked`);
+        .then(result => {
+            console.log(result);
+            if (result.status === 200) {
+                document.getElementById('order-booking-modal').close();
+                toast.success(`${orderBookingData.name} is booked`);
                 }
             })
             .catch(err => console.log(err.message));
@@ -56,7 +56,7 @@ const CategoryItems = () => {
             <h1 className=" my-2 flex justify-center items-center text-3xl">There Are {data.length} Products Are Available</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-4'>
                 {
-                    data?.map(product => <CategoryItemCard handleOrderBook={handleOrderBook} product={product}></CategoryItemCard>)
+                    data?.map((product, i) => <CategoryItemCard handleOrderBook={handleOrderBook} product={product} key={i}></CategoryItemCard>)
                 }
             </div>
             <dialog id="order-booking-modal" className="modal">

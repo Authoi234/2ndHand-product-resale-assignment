@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ConfirmationModal from '../ConfirmationModal';
 import toast from 'react-hot-toast';
 
-const CategoryItemCard = ({ product, handleOrderBook }) => {
+const CategoryItemCard = ({ product, handleOrderBook, success }) => {
     const [btnDisbled, setBtnDisabled] = useState(false)
     const [modalData, setModalData] = useState(null);
 
@@ -55,7 +55,7 @@ const CategoryItemCard = ({ product, handleOrderBook }) => {
                     <div className='flex justify-evenly items-center my-2'><p className="text-lg font-semibold my-2 text-white">Sale Status: <span className="uppercase text-red-500">{product.status}</span></p><label htmlFor='confirm-modal' onClick={() => setModalData(product)} className='btn btn-error text-white px-2' disabled={ (product.isReported === true && true) || btnDisbled === true}>Report To Admin</label></div> 
                     <Link to={`/categoryItem/${product._id}`} className='btn btn-secondary text-lg my-0 mx-auto'>Details Page | Purchase Page</Link>
                     <div className="divider"></div>
-                    <button className=" btn btn-outline btn-secondary w-3/5 my-0 mx-auto" onClick={() => handleOrderBook(product)} disabled={product.status === 'sold' && true}>Book Now</button>
+                    <button className=" btn btn-outline btn-secondary w-3/5 my-0 mx-auto" onClick={() => handleOrderBook(product)} disabled={(product.status === 'sold' && true)}>Book Now</button>
                 </div>
             </div>
             {modalData && <ConfirmationModal title={'Are you Sure? You want to Report to Admin about this product'}

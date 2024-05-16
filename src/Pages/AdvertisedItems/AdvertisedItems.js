@@ -83,32 +83,37 @@ const AdvertisedItems = () => {
     }
 
     const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 3000, min: 1401 },
+            items: 4
+        },
         desktop: {
-            breakpoint: { max: 3000, min: 1024 },
+            breakpoint: { max: 1400, min: 1071 },
             items: 3
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
+            breakpoint: { max: 1070, min: 670 },
             items: 2
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: { max: 650, min: 0 },
             items: 1
         }
     };
 
     if (products.length >= 1) {
         return (
-            <div className='px-7 pt-' style={{ backgroundImage: 'url(https://i.ibb.co/nD9XVBy/622956.webp)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
+            <div className='px-7 py-10' style={{ backgroundImage: 'url(https://i.ibb.co/nD9XVBy/622956.webp)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
                 <h1 className="text-4xl text-cyan-300 font-bold font-sans" style={{
-                    textShadow: `2px 2px 2px #080808`
+                    textShadow: `2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808`
                 }} >Advertised Products</h1>
-                <div className='mt-10 my-0 mx-auto'>
-                    <Carousel responsive={responsive} containerClass='center-carousel' slidesToSlide={1} swipeable showDots={true} renderDotsOutside={true} infinite autoPlay>
+                <div className='my-10 mx-auto w-full h-full'>
+                    <Carousel responsive={responsive} containerClass='lg:flex lg:justify-center items-center px-3 py-3' slidesToSlide={1} swipeable showDots={true} infinite autoPlay>
                         {
                             products?.map(product => <AdvertisedItemsCard product={product} handleOrderBook={handleOrderBook} ></AdvertisedItemsCard>)
                         }
                     </Carousel>
+
                 </div>
                 <dialog id="order-booking-modal" className="modal">
                     <div className="modal-box">

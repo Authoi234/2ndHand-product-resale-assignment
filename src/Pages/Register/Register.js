@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa6';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../App.css';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const Register = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('');
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
     const [passwordType, setPasswordType] = useState('password');
     const [error, setError] = useState('');
     const [userRole, setUserRole] = useState('Buyer');
@@ -64,7 +64,6 @@ const Register = () => {
             .then(result => {
                 updateUser(name)
                     .then(result => {
-
                         fetch('http://localhost:5000/user', {
                             method: 'POST',
                             headers: {
@@ -75,12 +74,42 @@ const Register = () => {
                             .then(result => {
                                 console.log(result);
                                 setCreatedUserEmail(email);
-                                toast.success('Successfully Sign Up 😊' );
+                                toast.success('Successfully Sign Up 😊');
 
                             })
                             .catch(err => setError(err.message));
                     })
                     .catch(err => setError(err));
+            })
+            .catch(err => setError(err.message))
+    }
+
+    const signInWithGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const loggedUser = result.user                ;
+                const savingUser = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email,
+                    userRole: 'Buyer',
+                    address: 'logged by social media',
+                    phone: ' '
+                }
+
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(savingUser)
+                })
+                    .then(result => {
+                        console.log(result);
+                        setCreatedUserEmail(loggedUser.email);
+                        toast.success('Successfully Sign Up 😊');
+
+                    })
+                    .catch(err => setError(err.message));
             })
             .catch(err => setError(err.message))
     }
@@ -109,24 +138,24 @@ const Register = () => {
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Password</span></div>
                         <div className='flex items-center'>
-                            <input className="input input-bordered w-full max-w-xs" name='password' type={passwordType}  placeholder="Enter Your Password" required />
+                            <input className="input input-bordered w-full max-w-xs" name='password' type={passwordType} placeholder="Enter Your Password" required />
                             <span className='text-2xl border p-2.5 rounded-r-lg tooltip' data-tip="Password Show/Hide" onClick={handlePasswordShow}>{passwordType === 'text' ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}</span>
                         </div>
                     </label>
                     <label className="form-control w-full max-w-xs">
                         <div className="label"><span className="label-text font-semibold">Select Role</span></div>
                         <div className='flex items-center my-2'>
-                            <input type="radio" value="Buyer" name='user-role' checked onChange={e => setUserRole(e.target.value)} className='radio checked:bg-green-600'/><span className='mx-2'> Buyer</span>
+                            <input type="radio" value="Buyer" name='user-role' checked onChange={e => setUserRole(e.target.value)} className='radio checked:bg-green-600' /><span className='mx-2'> Buyer</span>
                         </div>
                         <div className='flex items-center my-2'>
-                            <input type="radio" value="Seller" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-blue-600'/><span className='mx-2'> Seller</span>
+                            <input type="radio" value="Seller" name='user-role' onChange={e => setUserRole(e.target.value)} className='radio checked:bg-blue-600' /><span className='mx-2'> Seller</span>
                         </div>
                     </label>
                     <input className='btn rainbow-bg text-white w-full my-3' type="submit" />
                 </form>
                 <p className="text-red-600 -mt-4">{error}</p>
                 <p className='my-2 text-sm'>Already have an account ? <Link className='text-blue-400' to={'/login'}>Please Login</Link></p>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button className='btn btn-outline w-full group' onClick={signInWithGoogle}><FaGoogle className='text-blue-500 p-1 rounded-full text-2xl group-hover:bg-white'></FaGoogle> CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
