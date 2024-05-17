@@ -5,7 +5,7 @@ const ConfirmationModal = ({ title, message, successAction, successBtnName, moda
         <div>
             <input type="checkbox" id="confirm-modal" className="modal-toggle" />
             <div className="modal" role="dialog">
-                <div className="modal-box">
+                <div className="modal-box text-black">
                     <h3 className="font-bold text-lg">{title}</h3>
                     <p className="py-4">{message}</p>
                     <div className="modal-action">

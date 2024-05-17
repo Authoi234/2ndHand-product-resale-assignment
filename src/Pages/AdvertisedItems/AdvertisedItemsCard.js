@@ -15,7 +15,7 @@ const AdvertisedItemsCard = ({ product }) => {
                     <img src={product.img} className='w-full' alt="" />
                 </div>
             </Tilt>
-            <Link to={`/categoryItem/${product._id}`} className='w-full'><button className='w-full font-semibold text-blue-600 py-1 underline active:scale-90 transition-all underline-offset-2 decoration-2 decoration-black bg-white'>Shop Now</button></Link>
+            <Link to={`/advertisement/${product._id}`} className='w-full'><button className='w-full font-semibold text-blue-600 py-1 underline active:scale-90 transition-all underline-offset-2 decoration-2 decoration-black bg-white'>Shop Now</button></Link>
         </div>
     );
 };

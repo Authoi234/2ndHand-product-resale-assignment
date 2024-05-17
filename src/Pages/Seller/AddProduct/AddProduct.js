@@ -4,12 +4,14 @@ import '../../../App.css'
 import { format } from 'date-fns';
 import { AuthContext } from './../../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const [loading, setLoading] = useState(false);
     const [date, setDate] = useState(new Date());
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const imageHostKey = process.env.REACT_APP_ImgbbHostKey;
 
@@ -84,6 +86,7 @@ const AddProduct = () => {
                             toast.success('Product is added');
                             reset();
                             setLoading(false);
+                            navigate('/dashboard/myProducts')
                         })
                 }
             })

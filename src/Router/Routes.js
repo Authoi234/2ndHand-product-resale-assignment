@@ -21,6 +21,7 @@ import CategoryItemDetailPage from "../Shared/Category/CategoryItemDetailPage";
 import ReportedItems from "../Pages/Admin/ReportedItems/ReportedItems";
 import Payment from "../Pages/Buyer/Payments/Payment";
 import ErrorElement from "../Pages/errorpage/ErrorElement";
+import AdvertisedItemsDetailPage from "../Pages/AdvertisedItems/AdvertisedItemsDetailPage";
 
 const routes = createBrowserRouter([
     {
@@ -50,6 +51,17 @@ const routes = createBrowserRouter([
             {
                 path: '/categoryItem/:id',
                 element: <PrivateRoute><CategoryItemDetailPage></CategoryItemDetailPage></PrivateRoute>,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/product/${params.id}`, {
+                        headers: {
+                            jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
+                        }
+                    })
+                }
+            },
+            {
+                path: '/advertisement/:id',
+                element: <PrivateRoute><AdvertisedItemsDetailPage></AdvertisedItemsDetailPage></PrivateRoute>,
                 loader: ({ params }) => {
                     return fetch(`http://localhost:5000/product/${params.id}`, {
                         headers: {

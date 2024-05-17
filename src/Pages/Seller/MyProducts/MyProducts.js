@@ -55,7 +55,7 @@ const MyProducts = () => {
     }
 
     if (isPending) {
-        return <span className='loading loading-spinner loading-lg flex justify-center items-center'></span>
+        return <div className="flex justify-center items-center"><span className='loading loading-spinner loading-lg flex justify-center items-center'></span></div>
     }
 
     return (
