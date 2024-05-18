@@ -56,7 +56,7 @@ const Login = () => {
                     .then(data => {
                         if (data.accessToken) {
                             localStorage.setItem('accessToken', data.accessToken);
-                            toast.success('User Loggede In Successfully');
+                            toast.success('User Logged In Successfully');
                             return navigate(location?.state?.from?.pathname ? location?.state?.from?.pathname : '/')
                         }
                     })

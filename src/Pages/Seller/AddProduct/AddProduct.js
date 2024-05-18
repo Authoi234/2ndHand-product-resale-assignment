@@ -171,6 +171,9 @@ const AddProduct = () => {
                             className="file-input file-input-bordered w-full bg-pink-400" type="file" accept='image/*' {...register("image", { required: "Photo is required" })}
                         />
                     </div>
+                    <div role="alert" className='text-start'>
+                        <span className='text-yellow-500'><span className='mx-1'>⚠</span>Warning: Not Apply big size image. eg:10,000kb file, 4000kb file etc.</span>
+                    </div>
                     <button type="submit" className='btn btn-primary w-full md:max-w-md my-5'>Submit</button>
                 </form>
             </div>

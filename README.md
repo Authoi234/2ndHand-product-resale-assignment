@@ -1,3 +1,46 @@
+# Authois Products Resale
+
+## That is a awesome project.
+
+### That is a Super full Complete Project.
+
+#### This website used to sell and buy 2nd hand products but in good condition as they are capable to be advertised. all cars are fully painted. Any of cars is not wasted. This is fully complete website
+
+##### features and functionalities
+
+* This is a single page application
+* This is a secure website
+* You Data is Secured by Jwt
+* You can authenticate and authorize in this website
+* You can Login With google In this website
+* All data come to this website from the own server
+* All data are stored in Database
+* All data are dynamic
+* You Can Report a product to Admin
+* There are three categoies: 1. Supercars 2. Suv cars 3. Sedan Cars
+* There are two major types of Accounts: 1. Buyer  2. Seller
+* You Can Add product to Cart
+* You Can Pay Your Product
+* If you are a Seller, You can Add a product
+* You Can Set your product to be advertised
+* You Can Delete your product
+* There are An Other Type of account That is Admin
+* Admin only one Person
+* Website Owner can make Anyone Admin
+* Admin can see all Buyers and can Delete any buyer
+* Admin can see All Sellers and can Delete and Verify any Seller
+* Admin can delete Reported Items
+* We have cars of many world wide companies, like bugatti, lamboghini, audi, tesla, bmw etc.
+* There are also a blog page, where you can see answers of freqency asked questions
+* This is a very comfortable website
+
+### Live website Link is : https://happy-smile-assignment.web.app/
+
+# Getting Started with Create React App
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
