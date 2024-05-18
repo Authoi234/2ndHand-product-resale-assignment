@@ -34,12 +34,8 @@ const Login = () => {
                     .then(data => {
                         if (data.accessToken) {
                             localStorage.setItem('accessToken', data.accessToken);
-                            if (location?.state?.from?.pathname) {
-                                navigate(location?.state?.from?.pathname);
-                            }
-                            else {
-                                navigate('/');
-                            }
+                            toast.success('User Loggede In Successfully');
+                            return navigate(location?.state?.from?.pathname ? location?.state?.from?.pathname : '/')
                         }
                     })
             })
@@ -57,12 +53,8 @@ const Login = () => {
                     .then(data => {
                         if (data.accessToken) {
                             localStorage.setItem('accessToken', data.accessToken);
-                            if (location?.state?.from?.pathname) {
-                                navigate(location?.state?.from?.pathname);
-                            }
-                            else {
-                                navigate('/');
-                            }
+                            toast.success('User Loggede In Successfully');
+                            return navigate(location?.state?.from?.pathname ? location?.state?.from?.pathname : '/')
                         }
                     })
             })

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useRevalidator } from 'react-router-dom';
 import CategoryItemCard from './CategoryItemCard';
 import { AuthContext } from '../../Contexts/AuthContextProvider';
 import toast from 'react-hot-toast';
@@ -8,6 +8,7 @@ const CategoryItems = () => {
     const [orderBookingData, setOrderBookingData] = useState(null);
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
+    const revalidator = useRevalidator();
     console.log(data);
 
     const handleOrderBook = (orderData) => {
@@ -44,6 +45,7 @@ const CategoryItems = () => {
             if (result.status === 200) {
                 document.getElementById('order-booking-modal').close();
                 toast.success(`${orderBookingData.name} is booked`);
+                revalidator.revalidate();
                 }
             })
             .catch(err => console.log(err.message));
