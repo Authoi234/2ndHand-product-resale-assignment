@@ -34,7 +34,7 @@
 * There are also a blog page, where you can see answers of freqency asked questions
 * This is a very comfortable website
 
-### Live website Link is : https://happy-smile-assignment.web.app/
+### Live website Link is : 
 
 # Getting Started with Create React App
 
