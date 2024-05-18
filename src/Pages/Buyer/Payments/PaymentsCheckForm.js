@@ -19,7 +19,8 @@ const PaymentsCheckForm = ({ order }) => {
         fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ price })
         })
@@ -89,6 +90,7 @@ const PaymentsCheckForm = ({ order }) => {
                 method: 'POST',
                 headers: {
                     "content-type": "application/json",
+                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment)
             })

@@ -72,7 +72,7 @@ const AllBuyers = () => {
                                     <tr>
                                         <th className='font-bold text-xl'>{i + 1}</th>
                                         <td className='text-lg font-semibold'>{buyer?.name}</td>
-                                        <td className='text-base font-medium flex items-center'><MdEmail className='mx-2'></MdEmail> {buyer.email}</td>
+                                        <td className='text-base font-medium flex items-center'><MdEmail></MdEmail>{buyer.email}</td>
                                         <td className='text-base font-medium'><address>{buyer.address}</address></td>
                                         <td className='text-sm font-medium flex items-center'><MdPhone className='mx-2'></MdPhone> {buyer?.phone ? buyer?.phone : 'logged by social mendia'}</td>
                                         <td className=''><label htmlFor='confirm-modal' onClick={() => setModalData(buyer)} className='btn btn-secondary'>Delete</label></td>

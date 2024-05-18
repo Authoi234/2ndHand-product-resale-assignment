@@ -128,7 +128,7 @@ const AddProduct = () => {
 
                     <label className="form-control md:max-w-md w-full my-0 mx-auto">
                         <div className="label"><span className="label-text font-semibold text-xl text-white">Mobile Number</span></div>
-                        <input className="input input-bordered w-full text-white" style={{ backgroundColor: 'rgba(0,0,0, 0.5)' }} name='mobile' type="number" {...register("mobile")} required />
+                        <input className="input input-bordered w-full text-white" style={{ backgroundColor: 'rgba(0,0,0, 0.5)' }} name='mobile' type="tel" {...register("mobile")} required />
                     </label>
 
                     <label className="form-control md:max-w-md w-full my-0 mx-auto">
