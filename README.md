@@ -4,6 +4,13 @@
 
 ### That is a Super full Complete Project.
 
+### Admin Credencials:  
+
+#### adminEmail: jawadjabbarkhan@gmail.com
+#### adminPassword: AuthoiAdmin@123
+
+------------------------------------
+
 #### This website used to sell and buy 2nd hand products but in good condition as they are capable to be advertised. all cars are fully painted. Any of cars is not wasted. This is fully complete website
 
 ##### features and functionalities
