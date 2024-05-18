@@ -9,7 +9,7 @@ const MyBuyers = () => {
     const [buyersLoading, setBuyersLoading] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myBuyers/${user.email}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/myBuyers/${user.email}`, {
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
             }

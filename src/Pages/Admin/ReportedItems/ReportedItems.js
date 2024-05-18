@@ -10,7 +10,7 @@ const ReportedItems = () => {
     const { data: reportedItems = [], refetch, isPending } = useQuery({
         queryKey: ['reportedItems'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportedProducts', {
+            const res = await fetch('https://products-resale-assignment-server.vercel.app/reportedProducts', {
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -24,7 +24,7 @@ const ReportedItems = () => {
 
     const handleDelete = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/reportedProducts/${modalData?._id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/reportedProducts/${modalData?._id}`, {
             method: 'DELETE',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`

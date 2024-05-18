@@ -8,7 +8,7 @@ const SellerRoute = ({ children }) => {
     const { data: savedUser = [] } = useQuery({
         queryKey: ['savedUser', user?.uid],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/${user?.email}`, {
+            const res = await fetch(`https://products-resale-assignment-server.vercel.app/users/${user?.email}`, {
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

@@ -11,7 +11,7 @@ const AllBuyers = () => {
     const { data: allBuyers = [], error, isPending, refetch } = useQuery({
         queryKey: ['allBuyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allBuyers', {
+            const res = await fetch('https://products-resale-assignment-server.vercel.app/allBuyers', {
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -25,7 +25,7 @@ const AllBuyers = () => {
 
     const handleDelete = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/user/${modalData?._id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/user/${modalData?._id}`, {
             method: 'DELETE',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -76,7 +76,7 @@ const AddProduct = () => {
                         email
                     }
 
-                    fetch(`http://localhost:5000/addProduct`, {
+                    fetch(`https://products-resale-assignment-server.vercel.app/addProduct`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

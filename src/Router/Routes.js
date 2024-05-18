@@ -41,7 +41,7 @@ const routes = createBrowserRouter([
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryItems></CategoryItems></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/category/${params?.id}`, {
+                    return fetch(`https://products-resale-assignment-server.vercel.app/category/${params?.id}`, {
                         headers: {
                             jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                         }
@@ -52,7 +52,7 @@ const routes = createBrowserRouter([
                 path: '/categoryItem/:id',
                 element: <PrivateRoute><CategoryItemDetailPage></CategoryItemDetailPage></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/product/${params.id}`, {
+                    return fetch(`https://products-resale-assignment-server.vercel.app/product/${params.id}`, {
                         headers: {
                             jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                         }
@@ -63,7 +63,7 @@ const routes = createBrowserRouter([
                 path: '/advertisement/:id',
                 element: <PrivateRoute><AdvertisedItemsDetailPage></AdvertisedItemsDetailPage></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/product/${params.id}`, {
+                    return fetch(`https://products-resale-assignment-server.vercel.app/product/${params.id}`, {
                         headers: {
                             jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                         }
@@ -123,7 +123,7 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/order/${params.id}`,{
+                loader: ({ params }) => fetch(`https://products-resale-assignment-server.vercel.app/order/${params.id}`,{
                     headers: {
                         jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                     }

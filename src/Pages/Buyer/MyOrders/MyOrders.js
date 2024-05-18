@@ -7,7 +7,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
 
-    axios.get(`http://localhost:5000/orders/${user?.email}`, {
+    axios.get(`https://products-resale-assignment-server.vercel.app/orders/${user?.email}`, {
         headers: {
             jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
         }

@@ -10,7 +10,7 @@ const MyProducts = () => {
     const { data: products = [], isPending, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myProducts/${user?.email}`, {
+            const res = await fetch(`https://products-resale-assignment-server.vercel.app/myProducts/${user?.email}`, {
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -23,7 +23,7 @@ const MyProducts = () => {
     // Handling Delete
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/products/${id}`, {
             method: 'Delete',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -40,7 +40,7 @@ const MyProducts = () => {
 
     const handleAdvertise = (id) => {
         if (window.confirm('Are you sure? you want to Advertise🎉?') === true) {
-            fetch(`http://localhost:5000/setAdvertised/${id}`, {
+            fetch(`https://products-resale-assignment-server.vercel.app/setAdvertised/${id}`, {
                 method: 'PUT',
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`

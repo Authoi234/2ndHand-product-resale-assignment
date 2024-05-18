@@ -16,7 +16,7 @@ const Register = () => {
 
     useEffect(() => {
         if (createdUserEmail) {
-            fetch(`http://localhost:5000/jwt/${createdUserEmail}`)
+            fetch(`https://products-resale-assignment-server.vercel.app/jwt/${createdUserEmail}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {
@@ -68,7 +68,7 @@ const Register = () => {
             .then(result => {
                 updateUser(name)
                     .then(result => {
-                        fetch('http://localhost:5000/user', {
+                        fetch('https://products-resale-assignment-server.vercel.app/user', {
                             method: 'POST',
                             headers: {
                                 "content-type": "application/json"
@@ -102,7 +102,7 @@ const Register = () => {
                     phone: ' '
                 }
 
-                fetch('http://localhost:5000/user', {
+                fetch('https://products-resale-assignment-server.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

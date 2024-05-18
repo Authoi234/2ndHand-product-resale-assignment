@@ -16,7 +16,7 @@ const AdvertisedItems = () => {
     const { data: products, isPending, refetch, error } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertisedItems');
+            const res = await fetch('https://products-resale-assignment-server.vercel.app/advertisedItems');
             const data = await res.json();
             return data;
 
@@ -49,7 +49,7 @@ const AdvertisedItems = () => {
         }
         console.log(bookingData);
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://products-resale-assignment-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

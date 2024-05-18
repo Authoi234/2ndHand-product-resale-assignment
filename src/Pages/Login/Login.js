@@ -30,7 +30,7 @@ const Login = () => {
 
         signInUser(data.email, data.password)
             .then(result => {
-                fetch(`http://localhost:5000/jwt/${data.email}`)
+                fetch(`https://products-resale-assignment-server.vercel.app/jwt/${data.email}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.accessToken) {
@@ -51,7 +51,7 @@ const Login = () => {
     const signInWithGoogle = () => {
         googleSignIn()
             .then(result => {
-                fetch(`http://localhost:5000/jwt/${result.user.email}`)
+                fetch(`https://products-resale-assignment-server.vercel.app/jwt/${result.user.email}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.accessToken) {

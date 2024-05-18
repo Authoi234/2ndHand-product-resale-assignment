@@ -12,7 +12,7 @@ const AllSellers = () => {
     const { data: allSellers = [], error, isPending, refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allSellers', {
+            const res = await fetch('https://products-resale-assignment-server.vercel.app/allSellers', {
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -26,7 +26,7 @@ const AllSellers = () => {
 
     const handleDelete = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/user/${modalData?._id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/user/${modalData?._id}`, {
             method: 'DELETE',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -44,7 +44,7 @@ const AllSellers = () => {
     // Handle Verify
 
     const handleVerify = (modalData) => {
-        fetch(`http://localhost:5000/verifyUser/${modalData?._id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/verifyUser/${modalData?._id}`, {
             method: 'PUT',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`

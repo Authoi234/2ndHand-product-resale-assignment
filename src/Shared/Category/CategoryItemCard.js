@@ -13,7 +13,7 @@ const CategoryItemCard = ({ product, handleOrderBook, success }) => {
     // Handling Report to admin
     const handleReport = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/reportProduct/${modalData._id}`, {
             method: 'PUT',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -69,7 +69,7 @@ const CategoryItemCard = ({ product, handleOrderBook, success }) => {
             </div>
            
             {/* Modal To Confirm */}
-            
+
             {modalData && <ConfirmationModal title={'Are you Sure? You want to Report to Admin about this product'}
                 message='it will be reported and cant be trusted and admin can delete it. if there are any problem in this product report'
                 successAction={handleReport}

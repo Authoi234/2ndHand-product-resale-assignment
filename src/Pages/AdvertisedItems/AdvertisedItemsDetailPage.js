@@ -49,7 +49,7 @@ const CategoryItemDetailPage = () => {
         }
         console.log(bookingData);
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://products-resale-assignment-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
@@ -72,7 +72,7 @@ const CategoryItemDetailPage = () => {
 
     const handleReport = (modalData) => {
         console.log(modalData)
-        fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
+        fetch(`https://products-resale-assignment-server.vercel.app/reportProduct/${modalData._id}`, {
             method: 'PUT',
             headers: {
                 jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`

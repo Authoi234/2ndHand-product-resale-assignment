@@ -10,7 +10,7 @@ const Navbar = () => {
     const { data: savedUser = [], error } = useQuery({
         queryKey: ['savedUser', user, user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/${user?.email}`, {
+            const res = await fetch(`https://products-resale-assignment-server.vercel.app/users/${user?.email}`, {
                 headers: {
                     jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
