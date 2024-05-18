@@ -22,6 +22,8 @@ const AllSellers = () => {
         }
     })
 
+    // Handle Delete
+
     const handleDelete = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/user/${modalData?._id}`, {
@@ -38,6 +40,8 @@ const AllSellers = () => {
                 }
             })
     }
+
+    // Handle Verify
 
     const handleVerify = (modalData) => {
         fetch(`http://localhost:5000/verifyUser/${modalData?._id}`, {
@@ -103,12 +107,17 @@ const AllSellers = () => {
                     </table >
                 </div>
             </div>
+
+            {/* Confirmation Modal */}
+
             {deleteModalData && <ConfirmationModal title={'Are you Sure? You want to delete'}
                 message='It will permenently deleted and cant be undone'
                 successAction={handleDelete}
                 successBtnName='Delete'
                 modalData={deleteModalData}
             ></ConfirmationModal>}
+
+            {/* Confirmation Modal */}
 
             {verifyData && <ConfirmationModal title={'Please Sure that You want to Verify this user'}
                 message='He will be verified and can be trusted'

@@ -25,8 +25,9 @@ const Blogs = () => {
 
     return (
         <div className='mx-10'>
+            {/* Accordion Child 1 */}
             <div className="collapse collapse-plus bg-red-400">
-                <input type="radio" name="blogs-accordion" defaultChecked/>
+                <input type="radio" name="blogs-accordion" defaultChecked />
                 <div className="collapse-title text-2xl font-medium text-white">
                     What are the different ways to manage a state in a React application?
                 </div>
@@ -40,6 +41,7 @@ const Blogs = () => {
                     </ol>
                 </div>
             </div>
+            {/* Accordion Child 2 */}
             <div className="collapse collapse-plus bg-green-400">
                 <input type="radio" name="blogs-accordion" />
                 <div className="collapse-title text-2xl font-medium text-white">
@@ -49,6 +51,7 @@ const Blogs = () => {
                     <p>Prototypical inheritance is a fundamental concept in JavaScript that allows objects to inherit properties and methods from other objects. It is the mechanism by which JavaScript objects are linked to other objects, forming a prototype chain. By simplified, By linking objects to other objects through their prototypes, JavaScript achieves inheritance. If an object doesn't have a property or method, it can inherit it from its prototype, which may inherit from another prototype, forming a chain of inheritance. When you access a property or method of an object, js first checks if the property or method exist on the object. if not, it follows Prototypical chain by looking the prototype of the object and checks if the property exists here. this is continoues repetly untill the Prototypical chain come to the end or the property found. </p>
                 </div>
             </div>
+            {/* Accordion Child 3 */}
             <div className="collapse collapse-plus bg-cyan-400">
                 <input type="radio" name="blogs-accordion" />
                 <div className="collapse-title text-2xl font-medium text-white">
@@ -58,14 +61,17 @@ const Blogs = () => {
                     <p>A unit test is a type of software testing where individual units or components of a application are tested in isolation. These units can be functions, methods, classes, or modules, representing the smallest testable parts of the codebase. We should write unit tests, because they ensure that each unit of the code performs as expected. By testing individual units in isolation, we can verify that each component behaves correctly under the conditions. And unit tests are important to check out the error.</p>
                 </div>
             </div>
+            {/* Accordion Child 4 */}
             <div className="collapse collapse-plus" style={{ backgroundColor: '#ff00ff' }}>
-                <input type="radio" name="blogs-accordion"  />
+                <input type="radio" name="blogs-accordion" />
                 <div className="collapse-title text-2xl font-medium text-white">
                     React vs. Angular vs. Vue?
                 </div>
                 <div className="collapse-content bg-white border-2 border-black rounded-lg border-b-4 border-l-8 border-l-fuchsia-500 text-black text-xl">
                     <div>
                         <div className="lg:flex lg:justify-center lg:items-center">
+                            {/* Pie Chart */}
+
                             <ResponsiveContainer
                                 width='100%'
                                 height={250}

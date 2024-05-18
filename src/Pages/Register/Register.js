@@ -31,6 +31,8 @@ const Register = () => {
         navigate('/')
     }
 
+    // Handling Password show or hide in input field
+
     const handlePasswordShow = () => {
         if (passwordType === 'password') {
             setPasswordType('text');
@@ -39,6 +41,8 @@ const Register = () => {
             setPasswordType('password');
         }
     }
+
+    // Handling Register
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -84,7 +88,9 @@ const Register = () => {
             .catch(err => setError(err.message))
     }
 
-    const signInWithGoogle = () => {
+    // Sign Up With Google
+
+    const signUpWithGoogle = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user                ;
@@ -155,7 +161,7 @@ const Register = () => {
                 </form>
                 <p className="text-red-600 -mt-4">{error}</p>
                 <p className='my-2 text-sm'>Already have an account ? <Link className='text-blue-400' to={'/login'}>Please Login</Link></p>
-                <button className='btn btn-outline w-full group' onClick={signInWithGoogle}><FaGoogle className='text-blue-500 p-1 rounded-full text-2xl group-hover:bg-white'></FaGoogle> CONTINUE WITH GOOGLE</button>
+                <button className='btn btn-outline w-full group' onClick={signUpWithGoogle}><FaGoogle className='text-blue-500 p-1 rounded-full text-2xl group-hover:bg-white'></FaGoogle> CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

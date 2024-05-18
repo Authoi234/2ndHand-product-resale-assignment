@@ -21,10 +21,14 @@ const CategoryItemDetailPage = () => {
         return logout().then(res => <Navigate to={'/login'} state={{from: location}} replace></Navigate>)
     }
 
+    // Handling Book Order
+     
     const handleOrderBook = (orderData) => {
         setOrderBookingData(orderData);
         document.getElementById('order-booking-modal-on-detail-page').showModal();
     };
+
+    // Handling Submit Order
 
     const handleOrderSubmit = (e) => {
         e.preventDefault();
@@ -61,6 +65,8 @@ const CategoryItemDetailPage = () => {
             .catch(err => console.log(err.message));
     };
 
+    // Handling Report to Admin
+
     const handleReport = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
@@ -79,6 +85,9 @@ const CategoryItemDetailPage = () => {
     }
 
     return (
+        
+        // Card Content
+
         <div className='lg:flex lg:justify-center lg:items-center'>
             <div className='lg:w-5/12 w-auto mx-16 lg:mx-auto text-start'>
                 {data.isReported && <p className="text-red-500">⚠ This Product is Reported</p>}
@@ -124,6 +133,9 @@ const CategoryItemDetailPage = () => {
                     <h5 className='text-xl text-green-400 mx-3'>Original Price: {data.originalPrice}$</h5>
                 </div>
             </div>
+
+            {/* Order Booking Modal */}
+
             <dialog id="order-booking-modal-on-detail-page" className="modal">
                 <div className="modal-box">
                     <form onSubmit={handleOrderSubmit}>
@@ -156,6 +168,9 @@ const CategoryItemDetailPage = () => {
                     <button onClick={() => document.getElementById('order-booking-modal-on-detail-page').close()} className='btn btn-accent my-2 mx-2'> Cancel</button>
                 </div>
             </dialog>
+
+            {/* Confirmation Modal */}
+
             {reportModalData && <ConfirmationModal title={'Are you Sure? You want to Report to Admin about this product'}
                 message='it will be reported and cant be trusted and admin can delete it. if there are any problem in this product report'
                 successAction={handleReport}

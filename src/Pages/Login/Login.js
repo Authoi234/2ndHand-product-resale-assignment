@@ -23,7 +23,8 @@ const Login = () => {
         }
     }
 
-
+    // Handling Login
+    
     const handleLogin = (data) => {
         setLoginError('');
 
@@ -44,6 +45,8 @@ const Login = () => {
                 toast.error(`An error occured, ${error.message}`)
             })
     }
+
+    // Handling Google Login
 
     const signInWithGoogle = () => {
         googleSignIn()

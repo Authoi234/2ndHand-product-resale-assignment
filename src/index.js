@@ -10,8 +10,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
+    {/* React Query */}
     <QueryClientProvider client={queryClient}>
+      {/* My context api */}
       <AuthContextProvider>
+        {/* My app */}
         <App />
       </AuthContextProvider>
     </QueryClientProvider>

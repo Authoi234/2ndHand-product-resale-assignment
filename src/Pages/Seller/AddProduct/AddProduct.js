@@ -15,8 +15,13 @@ const AddProduct = () => {
 
     const imageHostKey = process.env.REACT_APP_ImgbbHostKey;
 
+    // Handle Add Product
+
     const handleAddProduct = (data) => {
         setLoading(true);
+
+        // Taking All Of the Data
+
         const dateOfPost = format(date, "PP")
         const image = data.image[0];
         const formData = new FormData();
@@ -37,6 +42,8 @@ const AddProduct = () => {
         const yearOfPurchase = parseInt(data?.yearofbuy);
         const mobile = parseInt(data?.mobile);
         const email = user?.email;
+
+        // Fetching
 
         fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
             method: 'POST',

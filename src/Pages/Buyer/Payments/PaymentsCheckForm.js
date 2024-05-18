@@ -15,6 +15,8 @@ const PaymentsCheckForm = ({ order }) => {
 
     const { price, name, email, _id } = order;
 
+    // Creating Payment Intent
+
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
@@ -28,10 +30,14 @@ const PaymentsCheckForm = ({ order }) => {
             .then(data => setClientSecret(data.clientSecret))
     }, [price]);
 
+    // Handling Submit
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         setCardError('');
+
+        // Checking Conditions
 
         if (!stripe || !elements) {
             return;
@@ -55,6 +61,8 @@ const PaymentsCheckForm = ({ order }) => {
         else {
             setCardError('');
         }
+
+        // Confirming Card Payment
 
         setSuccess('');
         setProccessing(true);
@@ -86,6 +94,8 @@ const PaymentsCheckForm = ({ order }) => {
                 orderId: _id
             }
 
+            // Store payment
+
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
@@ -111,6 +121,7 @@ const PaymentsCheckForm = ({ order }) => {
 
     return (
         <>
+            {/* Form */}
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{

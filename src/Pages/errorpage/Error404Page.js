@@ -18,8 +18,10 @@ const Error404Page = () => {
         height: '100vh'
       }}>
 
+
         {/* stars of left side */}
 
+
         <FaStar className='text-yellow-300 absolute animate-spin' style={{
           top: ranodmNumGenerate(),
           left: ranodmNumGenerate()
@@ -81,7 +83,9 @@ const Error404Page = () => {
           left: ranodmNumGenerate()
         }} ></FaStar>
 
+
         {/* starts of right side */}
+
 
         <FaStar className='text-yellow-300 absolute animate-spin' style={{
           top: ranodmNumGenerate(),

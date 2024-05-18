@@ -24,10 +24,14 @@ const AdvertisedItems = () => {
     })
     console.log(products)
 
+    // Handling Book Order
+
     const handleOrderBook = (orderData) => {
         setOrderBookingData(orderData);
         document.getElementById('order-booking-modal').showModal();
     }
+
+    // Handling Submit Order
 
     const handleOrderSubmit = (e) => {
         e.preventDefault();
@@ -108,6 +112,9 @@ const AdvertisedItems = () => {
                     textShadow: `2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808, 2px 2px 2px #080808`
                 }} >Advertised Products</h1>
                 <div className='my-10 mx-auto w-full h-full'>
+
+                    {/* React Multi Carousel */}
+
                     <Carousel responsive={responsive} containerClass='lg:flex lg:justify-center items-center px-3 py-3' slidesToSlide={1} swipeable showDots={true} infinite autoPlay>
                         {
                             products?.map(product => <AdvertisedItemsCard product={product} handleOrderBook={handleOrderBook} ></AdvertisedItemsCard>)
@@ -115,6 +122,9 @@ const AdvertisedItems = () => {
                     </Carousel>
 
                 </div>
+
+                {/* Order Booking Modal */}
+
                 <dialog id="order-booking-modal" className="modal">
                     <div className="modal-box">
                         <form onSubmit={handleOrderSubmit}>

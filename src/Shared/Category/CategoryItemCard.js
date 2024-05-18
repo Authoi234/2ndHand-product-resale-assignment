@@ -10,6 +10,7 @@ const CategoryItemCard = ({ product, handleOrderBook, success }) => {
     const [btnDisbled, setBtnDisabled] = useState(false)
     const [modalData, setModalData] = useState(null);
 
+    // Handling Report to admin
     const handleReport = (modalData) => {
         console.log(modalData)
         fetch(`http://localhost:5000/reportProduct/${modalData._id}`, {
@@ -29,7 +30,12 @@ const CategoryItemCard = ({ product, handleOrderBook, success }) => {
 
     return (
         <div>
+            {/* Card */}
+
             <div className="rounded-lg card w-full border border-b-slate-200 border-l-gray-100 inner-element relative animation-colorfull" style={{ boxShadow: '20px 20px 50px rgba(0,0,0,0.5)', backgroundColor: 'rgba(0,0,0,0.25)' }}>
+                
+                {/* Card Details */}
+
                 <Tilt scale={1.05} glareEnable={true} glareMaxOpacity={0.8} glareColor="white" glarePosition="all" glareBorderRadius="20px" className="background-stripes parallax-effect" perspective={700}>
                     <figure><Link to={`/categoryItem/${product._id}`}><img src={product.img} alt="" /></Link></figure>
                     <div className="card-body">
@@ -51,6 +57,9 @@ const CategoryItemCard = ({ product, handleOrderBook, success }) => {
                         </div>
                     </div>
                 </Tilt>
+               
+                {/* Card Actions */}
+
                 <div className='mb-5 -mt-1'>
                     <div className='flex justify-evenly items-center my-2'><p className="text-lg font-semibold my-2 text-white">Sale Status: <span className="uppercase text-red-500">{product.status}</span></p><label htmlFor='confirm-modal' onClick={() => setModalData(product)} className='btn btn-error text-white px-2' disabled={ (product.isReported === true && true) || btnDisbled === true}>Report To Admin</label></div> 
                     <Link to={`/categoryItem/${product._id}`} className='btn btn-secondary text-lg my-0 mx-auto'>Details Page | Purchase Page</Link>
@@ -58,6 +67,9 @@ const CategoryItemCard = ({ product, handleOrderBook, success }) => {
                     <button className=" btn btn-outline btn-secondary w-3/5 my-0 mx-auto" onClick={() => handleOrderBook(product)} disabled={(product.status === 'sold' && true)}>Book Now</button>
                 </div>
             </div>
+           
+            {/* Modal To Confirm */}
+            
             {modalData && <ConfirmationModal title={'Are you Sure? You want to Report to Admin about this product'}
                 message='it will be reported and cant be trusted and admin can delete it. if there are any problem in this product report'
                 successAction={handleReport}

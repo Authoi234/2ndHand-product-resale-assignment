@@ -20,6 +20,7 @@ const MyProducts = () => {
         }
     })
 
+    // Handling Delete
 
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/products/${id}`, {
@@ -34,6 +35,8 @@ const MyProducts = () => {
                 toast.success('Product Deleted');
             })
     }
+
+    // Handling Advertise
 
     const handleAdvertise = (id) => {
         if (window.confirm('Are you sure? you want to Advertise🎉?') === true) {
@@ -88,6 +91,7 @@ const MyProducts = () => {
                 </table>
             </div>
 
+            {/* Confirmation Modal */}
 
             {modalData && <div>
                 <input type="checkbox" id="confirm-modal" className="modal-toggle" />

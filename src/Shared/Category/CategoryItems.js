@@ -9,16 +9,19 @@ const CategoryItems = () => {
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
     const revalidator = useRevalidator();
-    console.log(data);
+
+    // Handling Book Order
 
     const handleOrderBook = (orderData) => {
         setOrderBookingData(orderData);
         document.getElementById('order-booking-modal').showModal();
     }
 
+    // Handling Submit Order
+
     const handleOrderSubmit = (e) => {
         e.preventDefault();
-        
+
         const bookingData = {
             productId: orderBookingData._id,
             email: user.email,
@@ -31,7 +34,7 @@ const CategoryItems = () => {
             sellersEmail: orderBookingData.email
         }
         console.log(bookingData);
-        
+
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
@@ -40,12 +43,12 @@ const CategoryItems = () => {
             },
             body: JSON.stringify(bookingData)
         })
-        .then(result => {
-            console.log(result);
-            if (result.status === 200) {
-                document.getElementById('order-booking-modal').close();
-                toast.success(`${orderBookingData.name} is booked`);
-                revalidator.revalidate();
+            .then(result => {
+                console.log(result);
+                if (result.status === 200) {
+                    document.getElementById('order-booking-modal').close();
+                    toast.success(`${orderBookingData.name} is booked`);
+                    revalidator.revalidate();
                 }
             })
             .catch(err => console.log(err.message));
@@ -61,6 +64,9 @@ const CategoryItems = () => {
                     data?.map((product, i) => <CategoryItemCard handleOrderBook={handleOrderBook} product={product} key={i}></CategoryItemCard>)
                 }
             </div>
+
+            {/* Order Booking Modal */}
+
             <dialog id="order-booking-modal" className="modal">
                 <div className="modal-box">
                     <form onSubmit={handleOrderSubmit}>
