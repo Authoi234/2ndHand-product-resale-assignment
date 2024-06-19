@@ -1,25 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
-import { AuthContext } from '../../Contexts/AuthContextProvider';
-import { useQuery } from '@tanstack/react-query';
 
-const Navbar = () => {
-    const { user, logout } = useContext(AuthContext);
-
-    const { data: savedUser = [], error } = useQuery({
-        queryKey: ['savedUser', user, user?.email],
-        queryFn: async () => {
-            const res = await fetch(`https://products-resale-assignment-server.vercel.app/users/${user?.email}`, {
-                headers: {
-                    jwtauthorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
-            const data = await res.json();
-            return data;
-        }
-    });
-
+const Navbar = ({user, logout, savedUser}) => {
     const handleLogOut = () => {
         logout()
             .then(() => { })
